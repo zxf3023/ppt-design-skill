@@ -1,0 +1,11 @@
+{
+  "name": "ppt-design-skill",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A general-purpose PPT / deck design methodology as an agent skill",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zxf3023/ppt-design-skill"
+  },
+  "license": "MIT"
+}
