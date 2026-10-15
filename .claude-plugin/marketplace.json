@@ -1,0 +1,24 @@
+{
+  "name": "zxf3023",
+  "owner": {
+    "name": "zxf3023",
+    "url": "https://github.com/zxf3023"
+  },
+  "description": "PPT design skills as an installable agent plugin.",
+  "plugins": [
+    {
+      "name": "ppt-design-skills",
+      "source": "./",
+      "description": "A general-purpose PPT / deck design methodology: logic layer (Pyramid Principle, MECE, SCQA), visual layer (Gestalt, rule of thirds, Hick's law, CRAP), structure layer (5W2H, SWOT, funnel, timeline), numeric specs, wall-of-text handling, and pluggable colour themes.",
+      "category": "productivity",
+      "keywords": [
+        "ppt",
+        "slides",
+        "deck",
+        "presentation",
+        "design",
+        "productivity"
+      ]
+    }
+  ]
+}
