@@ -1,0 +1,77 @@
+{
+  "palette": {
+    "primary": "1F3A5F",
+    "primary_dark": "142840",
+    "accent": "B5452F",
+    "bg_top": "F4F1E8",
+    "bg_bottom": "F1EDE3",
+    "surface": "F9F7F1",
+    "tint": "E7ECF2",
+    "text": "1A1916",
+    "muted": "5C5A52",
+    "on_primary": "F9F7F1",
+    "line": "DDD8CA"
+  },
+  "fonts": {
+    "heading_ea": "Source Han Serif SC",
+    "body_ea": "Microsoft YaHei",
+    "heading_latin": "Georgia",
+    "body_latin": "Arial",
+    "display_latin": "Georgia"
+  },
+  "shape": {
+    "radius": 0.04,
+    "shadow": false,
+    "card_alpha": 1.0,
+    "depth": "ring"
+  },
+  "decor": {
+    "header": false,
+    "leaf": false,
+    "brush": false,
+    "title_mark": false,
+    "sparkles": false,
+    "closing_dark": true,
+    "number_style": "plain",
+    "watermark_color": "primary@0.07",
+    "bullet": "dash",
+    "emphasis": "color",
+    "chrome": "editorial"
+  },
+  "background": {
+    "decor": [
+      "grain"
+    ],
+    "cover_decor": [
+      "grain"
+    ],
+    "closing_decor": []
+  },
+  "prefer_layouts": {
+    "cover": "cover_type"
+  },
+  "title_emphasis_color": "accent",
+  "illustration": {
+    "style_prompt": "quiet editorial ink illustration, fine line drawing with a single ink-blue wash on warm paper, lots of negative space",
+    "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text",
+    "fallback_look": "flat",
+    "skip_layouts": [
+      "cover_hero",
+      "section",
+      "closing"
+    ]
+  },
+  "forbid": {
+    "pure_white": true,
+    "pure_black": true,
+    "shadow": true
+  },
+  "rules": [
+    "靠宋体标题和留白撑画面，不加装饰图形",
+    "墨蓝只用于章节号、数字和少量强调，朱红全篇只点一两个词",
+    "卡片只描一条细边，不加阴影"
+  ],
+  "emphasis_color": "primary",
+  "name": "ink-magazine",
+  "label": "墨水杂志"
+}
