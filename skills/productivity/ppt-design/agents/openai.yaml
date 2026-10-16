@@ -1,3 +1,4 @@
 interface:
   display_name: "PPT Design"
-  short_description: "Design decks: logic, layout, colour, data pages"
+  short_description: "Design decks and produce editable .pptx"
+  default_prompt: "Use $ppt-design to work through the logic, structure and layout first, then produce an editable native .pptx. When a reference image is supplied, beautify the existing deck without changing its text."
