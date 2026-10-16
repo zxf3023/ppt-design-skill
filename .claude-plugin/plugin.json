@@ -1,7 +1,7 @@
 {
   "name": "ppt-design-skills",
-  "version": "1.0.0",
-  "description": "A general-purpose PPT / deck design methodology as an agent skill. Three theory layers (logic, visual, structure), hard numeric specs, wall-of-text handling, narrative pacing, and pluggable colour themes.",
+  "version": "2.0.0",
+  "description": "A PPT / deck design methodology plus an execution engine, as one agent skill. Three theory layers (logic, visual, structure), hard numeric specs, wall-of-text handling and narrative pacing; plus generation and beautification routes that emit editable native .pptx, 14 style presets, an icon library and a five-dimension self-review chain.",
   "author": {
     "name": "zxf3023",
     "url": "https://github.com/zxf3023"
@@ -15,6 +15,8 @@
     "deck",
     "presentation",
     "design",
+    "pptx",
+    "python-pptx",
     "productivity",
     "skills"
   ],
