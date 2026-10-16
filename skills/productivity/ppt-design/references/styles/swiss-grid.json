@@ -1,0 +1,78 @@
+{
+  "palette": {
+    "primary": "111111",
+    "primary_dark": "0A0A0A",
+    "accent": "E8491D",
+    "bg_top": "F5F5F2",
+    "bg_bottom": "F5F5F2",
+    "surface": "FFFFFF",
+    "tint": "EBEBE6",
+    "text": "111111",
+    "muted": "555555",
+    "on_primary": "FFFFFF",
+    "line": "D6D6D0",
+    "highlight": "C23A16",
+    "strong": "111111"
+  },
+  "fonts": {
+    "heading_ea": "Microsoft YaHei",
+    "body_ea": "Microsoft YaHei",
+    "heading_latin": "Arial",
+    "body_latin": "Arial",
+    "display_latin": "Arial Black"
+  },
+  "shape": {
+    "radius": 0.0,
+    "shadow": false,
+    "card_alpha": 1.0,
+    "depth": "flat"
+  },
+  "decor": {
+    "header": false,
+    "leaf": false,
+    "brush": false,
+    "title_mark": false,
+    "sparkles": false,
+    "closing_dark": true,
+    "number_style": "block",
+    "watermark_color": "accent@0.12",
+    "bullet": "number",
+    "emphasis": "color",
+    "chrome": "editorial"
+  },
+  "background": {
+    "decor": [],
+    "cover_decor": [
+      "band"
+    ],
+    "closing_decor": [],
+    "band_color": "accent"
+  },
+  "prefer_layouts": {
+    "cover": "cover_type",
+    "toc": "toc_row"
+  },
+  "title_emphasis_color": "accent",
+  "illustration": {
+    "style_prompt": "swiss modernist poster graphic, flat black shapes with one signal-orange element, strict grid, no gradients",
+    "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text",
+    "fallback_look": "flat",
+    "skip_layouts": [
+      "cover_hero",
+      "section",
+      "closing"
+    ]
+  },
+  "forbid": {
+    "shadow": true,
+    "radius_over": 0.0
+  },
+  "rules": [
+    "全程直角，不用阴影和渐变",
+    "整页只有黑、白、灰和一个信号橙",
+    "编号、数字用粗体，靠字号反差建立层级"
+  ],
+  "emphasis_color": "primary",
+  "name": "swiss-grid",
+  "label": "硬边网格"
+}
