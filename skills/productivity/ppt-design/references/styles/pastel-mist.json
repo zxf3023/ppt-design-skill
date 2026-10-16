@@ -1,0 +1,65 @@
+{
+  "palette": {
+    "primary": "2F80D9",
+    "primary_dark": "1E2A78",
+    "accent": "F29CCB",
+    "bg_top": "FFFFFF",
+    "bg_bottom": "F8F9FE",
+    "surface": "FFFFFF",
+    "tint": "E6F0FC",
+    "text": "1E2350",
+    "muted": "595E84",
+    "on_primary": "FFFFFF",
+    "line": "DCE2F2"
+  },
+  "fonts": {
+    "heading_ea": "Source Han Serif SC",
+    "body_ea": "Microsoft YaHei",
+    "heading_latin": "Georgia",
+    "body_latin": "Arial",
+    "display_latin": "Georgia"
+  },
+  "shape": {
+    "radius": 0.22,
+    "shadow": true,
+    "card_alpha": 0.72,
+    "depth": "whisper"
+  },
+  "decor": {
+    "header": true,
+    "leaf": false,
+    "brush": false,
+    "title_mark": true,
+    "sparkles": true,
+    "closing_dark": false,
+    "number_style": "badge",
+    "watermark_color": "primary@0.08",
+    "bullet": "icon",
+    "emphasis": "serif",
+    "chrome": "standard"
+  },
+  "background": {
+    "decor": [
+      "mist"
+    ],
+    "cover_decor": [
+      "mist"
+    ],
+    "closing_decor": [
+      "mist"
+    ]
+  },
+  "illustration": {
+    "style_prompt": "soft pastel glassy 3D icon, sky blue and pink gradient, frosted translucent material, dreamy and light",
+    "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text"
+  },
+  "rules": [
+    "柔雾只在四角，中间留白给文字",
+    "标题用深藏青宋体，别用纯黑",
+    "卡片半透明加轻阴影，避免硬边框"
+  ],
+  "emphasis_color": "accent",
+  "name": "pastel-mist",
+  "label": "蓝粉柔雾",
+  "forbid": {}
+}
