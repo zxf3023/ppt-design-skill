@@ -1,0 +1,74 @@
+{
+  "palette": {
+    "primary": "1E9E97",
+    "primary_dark": "11706C",
+    "accent": "4FE3CF",
+    "bg_top": "06101C",
+    "bg_bottom": "0A2232",
+    "surface": "0F2636",
+    "tint": "133245",
+    "text": "EAF6F6",
+    "muted": "93AFB8",
+    "on_primary": "FFFFFF",
+    "line": "1E4152"
+  },
+  "fonts": {
+    "heading_ea": "Microsoft YaHei",
+    "body_ea": "Microsoft YaHei",
+    "heading_latin": "Arial",
+    "body_latin": "Arial",
+    "display_latin": "Arial Black"
+  },
+  "shape": {
+    "radius": 0.1,
+    "shadow": false,
+    "card_alpha": 0.8,
+    "depth": "ring"
+  },
+  "decor": {
+    "header": true,
+    "leaf": false,
+    "brush": false,
+    "title_mark": true,
+    "sparkles": false,
+    "closing_dark": false,
+    "number_style": "plain",
+    "watermark_color": "accent@0.10",
+    "bullet": "number",
+    "emphasis": "color",
+    "chrome": "standard"
+  },
+  "background": {
+    "decor": [
+      "rings"
+    ],
+    "cover_decor": [
+      "rings"
+    ],
+    "closing_decor": [
+      "rings"
+    ],
+    "line_color": "accent"
+  },
+  "prefer_layouts": {
+    "toc": "toc_row"
+  },
+  "illustration": {
+    "style_prompt": "glowing teal line-art tech illustration on a deep navy background, thin luminous strokes, minimal and futuristic",
+    "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text",
+    "skip_layouts": [
+      "section"
+    ]
+  },
+  "rules": [
+    "波纹线只放在封面、结尾和内容页右上角",
+    "青色用于数字和关键词，不做大色块",
+    "图表只用青色一个色系，靠深浅区分"
+  ],
+  "emphasis_color": "accent",
+  "name": "wave-launch",
+  "label": "蓝线发布",
+  "forbid": {
+    "pure_black": true
+  }
+}
