@@ -1,31 +1,51 @@
 ---
 name: ppt-design
-description: "Design and build PPT / deck presentations from first principles: outline the narrative, structure the logic, lay out pages, pick colour and type, compress walls of text, and build chart and data pages. Use when the user wants to make, beautify, review or fix a deck, slides, a business report or proposal deck — including building an outline, tightening the story, laying out pages, choosing a palette or font, handling long text, or reviewing deck logic. Ships three theory frameworks (logic: Pyramid Principle / MECE / SCQA; visual: Gestalt / rule of thirds / Hick's law; structure: 5W2H / SWOT / funnel / timeline) and pluggable colour themes."
+description: "PPT design methodology plus an execution engine, producing editable native .pptx end to end. The methodology half answers \"how to think and how to lay out\": a logic layer (Pyramid Principle / MECE / SCQA), a visual layer (Gestalt / rule of thirds / Hick's law / CRAP), and a structure layer (5W2H / SWOT / funnel / timeline), plus type scale, whitespace, colour, wall-of-text handling, data pages and narrative pacing. The execution-engine half answers \"how to actually produce the file\": give it a topic, article, spoken script or outline and it generates a deck with conclusion-style titles, speaker notes and a consistent style; give it a plain .pptx plus one reference image and it swaps in a unified palette, master, layouts, icons and illustrations without changing a single word of the text. Use whenever the user asks to make, write, beautify, lay out, review or outline a deck or slides, a business report or proposal deck, or drops in a .pptx, article, outline or reference image. Ships fourteen style presets, an icon library and a five-dimension self-review chain; the image model is configurable and falls back to programmatic illustration when none is configured."
 ---
 
-# General PPT Design Methodology
+# PPT Design and Production (Methodology + Execution Engine)
 
-**Core creed**: A PPT is not a document, it is a **visual aid**. The audience is here to listen to you, not to read your slides.
+**Core belief**: A PPT is not a document — it is a **visual aid**. The audience is here to listen to you speak, not to read your slides.
 
 > "The presentation, the slides — all of it is nothing more than a vehicle for information, and a vehicle tends to be fastest when light and devoid of clutter."
 
-Before making every page, ask: **this page says only one thing — what is that thing?**
+Before making every page, ask: **this page covers only one thing — what is that thing?**
 
 ---
 
-## Overview of the Theory Frameworks
+## How to Use This Skill
 
-This methodology rests on three long-proven bodies of theory, which answer respectively "how to think", "how to draw" and "how to structure":
+It has two parts: the methodology governs "how to think, how to arrange", and the execution engine governs "how to actually produce the file". You can use only the first half to make design decisions, or follow it all the way through to produce a `.pptx`.
 
-| Layer | Framework | What problem it solves | Chapter |
+| What you want to do | Where to look |
+|---|---|
+| Clarify how content should be organised and how arguments hold up | Chapters 1–3 · Logic layer, visual layer, structure layer |
+| Set font sizes, whitespace, colour scheme, fonts | Chapter 4 · Hard numeric specifications |
+| Handle a large block of text | Chapter 5 · Handling large blocks of text |
+| Choose page types, write titles, build data pages | Chapter 6 · Page structure templates |
+| Arrange narrative rhythm | Chapter 7 · Narrative rhythm |
+| Use scripts to manipulate pptx | Chapter 8 · Manipulating PPT with Python |
+| Check before delivery | Chapter 9 · Delivery checks |
+| **Actually produce / beautify a .pptx file** | **Chapter 11 · Execution Engine** |
+
+**Two paths**:
+
+- **Design decisions only** (review, build an outline, set specifications, give advice) → read Chapters 1–10, no need to touch the scripts.
+- **Produce an editable .pptx** → think it through per Chapters 1–7 first, then follow the execution engine in Chapter 11. The engine carries the complete generation and beautification workflow and does not repeat the methodology's content; the methodology's numeric specifications (Chapter 4) and checklists (Chapter 9) are exactly the standards the engine must follow.
+
+---
+
+## Theoretical Framework Overview
+
+This methodology is built on three sets of long-validated theories, which respectively address "how to think", "how to draw" and "how to build":
+
+| Layer | Framework | What it solves | Chapter |
 |---|---|---|---|
-| **Logic layer** | Pyramid Principle · MECE · SCQA | How to organise content, how to make a point hold | Chapter 1 |
-| **Visual layer** | Gestalt · rule of thirds · Hick's Law | How to lay out the page, how the eye reads | Chapter 2 |
-| **Structure layer** | 5W2H · SWOT · funnel · timeline | Which framework carries a specific page | Chapter 3 |
+| **Logic layer** | Pyramid Principle · MECE · SCQA | How content is organised, how arguments hold up | Chapter 1 |
+| **Visual layer** | Gestalt · Rule of Thirds · Hick's Law | How the page is arranged, how the eye looks | Chapter 2 |
+| **Structure layer** | 5W2H · SWOT · Funnel · Timeline | Which framework carries a specific page | Chapter 3 |
 
-**Order of use**: first think it through with the logic layer → then pick the carrying form with the structure layer → finally land the layout with the visual layer.
-
----
+**Order of use**: first think it through with the logic layer → then choose the carrying form with the structure layer → finally land the arrangement with the visual layer.
 
 # Chapter 1 · Logic Layer
 
@@ -712,27 +732,200 @@ For the specific theme colour values see the `themes/` directory.
 
 # Chapter 10 · Workflow Overview
 
+**When you only want to think it through and not produce a file**, just follow steps 1 to 8:
+
 ```
-1. Clarify the scenario    Auditorium talk / laptop reading / email? (decides type size and information density)
-2. Build the logic skeleton Pyramid + MECE to organise content; SCQA to design the opening
-3. Choose the structure    5W2H / SWOT / funnel / timeline —— pick by page content
-4. Write the outline       Write titles as conclusion sentences, run the title test
-5. Land the visuals        Gestalt grouping, rule-of-thirds composition, Hick's Law load control, CRAP refinement
-6. Build page by page      One assertion per page; walls of text go through the four-step method; data goes through the trio
-7. Unify the treatment     Unify the type scale, colour scheme and card specifications
-8. Delivery check          Run the Chapter 9 checklist; embed fonts; export PDF
+1. Clarify the scenario    Auditorium talk / laptop reading / email sending? (determines font size and information density)
+2. Build the logic skeleton    Organise content with Pyramid + MECE; design the opening with SCQA
+3. Choose a structure framework    5W2H / SWOT / Funnel / Timeline —— choose by page content
+4. Write the outline    Write titles as conclusive sentences, run the title test
+5. Land the visuals    Gestalt grouping, Rule-of-Thirds composition, Hick's Law load control, CRAP refinement
+6. Build page by page    One assertion per page; large text blocks use the four-step method; data uses the three-piece set
+7. Unify the treatment    Unify the font-size ladder, colour scheme, card specifications
+8. Delivery check    Run the Chapter 9 checklist; embed fonts; export PDF
 ```
 
----
+**When you actually want to produce an editable `.pptx`**, after steps 1 to 4 hand it to the execution engine, which takes over the subsequent layout planning, asset generation, assembly and self-check:
+
+```
+1. Clarify the scenario    ┐
+2. Build the logic skeleton    │ Handled by the methodology (Chapters 1–7)
+3. Choose a structure framework    │
+4. Write the outline    ┘
+5. Hand to the execution engine    → Chapter 11: write deck.json, set the style, plan the layout
+6. Generate assets and assemble    → pipeline.py runs it all in one command
+7. Five-dimension self-review    → look at sheet.png, score per critique.md and fix the "must fix" items
+8. Delivery    → out/*.pptx + overview sheet + score explanation
+```
+
+Both paths share the same set of design standards: the engine's layout library follows the font-size ladder and minimum whitespace of Chapter 4, and the pre-delivery self-check layers on the Chapter 9 checklist.
+
+# Chapter 11 · Execution Engine
+
+The methodology addresses "how to think, how to arrange"; this chapter addresses "how to actually produce the file". The two routes share one design engine: generation is "write the content then design it", beautification is "extract the content of the original then design it", and from layout planning onward they are exactly the same.
+
+Three intermediate files thread through the whole flow; the scripts handle the deterministic work, and the model handles understanding the content and aesthetic judgement.
+
+| File | Content | During beautification | During generation |
+|---|---|---|---|
+| `deck.json` | Each page's page type, title, key points, data, notes | Extracted from the original, text unchanged verbatim | Written per `references/generate.md` |
+| `style.json` | Palette, fonts, corner radius, decoration, illustration style | Extracted from the reference image | Extracted from the reference image, or picked from the preset library |
+| `plan.json` | Each page's layout, icons, illustrations and prompts | Drafted by `plan_deck.py`, revised by the model | Same as the left |
+
+Below, `$S` refers to this skill's `scripts` directory, and `$W` refers to this run's working directory (e.g. `./ppt_work`). On Windows, replace `python3` with `python`.
+
+## 11.1 Before You Start
+
+1. **Determine the route**
+   - The user gave a .pptx and wants it to look better → Route A beautification
+   - What was given is a topic, article, spoken script, outline or other material, to be turned into a PPT → Route B generation
+   - A .pptx was given but the content is to be rewritten and the structure adjusted → Route B, read the pptx as material
+2. **Environment self-check**, which finishes within a second if it passed before, otherwise auto-installs missing dependencies. If the exit code is non-zero, tell the user the suggestion and stop; if only recommended components (such as LibreOffice) are missing you can continue, and the pipeline will switch to `render_lite.py` to draw an approximate preview directly from the layout data, so layout, colour scheme and overflow are still visible — state at delivery that the preview is an approximate image. To skip LibreOffice for speed you can also add `--lite`.
+   ```bash
+   python3 $S/setup_check.py --quick --install
+   ```
+3. **Image-generation status** `python3 $S/make_assets.py $W --status` — tell the user in one sentence which model is connected, or that procedural illustration will be used. For configuration see `references/imagegen_config.md`.
+4. **Ask once** to clarify the choices the route needs, and use defaults for the rest. When the user says "just do it" or "no need to ask", or is not present, use all defaults and list the choices made at delivery.
+5. **Fast mode**: when the user says "fast mode", "stop asking" or "in a hurry", skip the confirmation of the style card, outline and design specification; the five-dimension self-review fixes only one round of "must fix" items, and "nice-to-fix" items are written into the delivery notes without acting on them. For a deck of about 12 pages, normal is 15 to 25 minutes and fast mode is around 10 minutes; the bulk of the time goes into transcribing text and looking at images, while the scripts themselves take only a minute or two.
+   - Beautification: strength light / standard / full (default full), whether to allow text refinement (default not allowed)
+   - Generation: purpose, audience, duration, presence of a reference image, whether spoken notes are wanted; for defaults see `references/generate.md`
+
+## 11.2 Route A Beautification
+
+1. **Parse the original** `python3 $S/extract_deck.py original.pptx $W`, then look at `source_png/sheet.png`. The script repairs zips that LibreOffice cannot open, and can also read spoken notes hidden in the descr attribute.
+2. **Read the reference image** `python3 $S/extract_style.py reference.png $W`, then look at the image yourself, write `$W/style.json` per `references/style_extraction.md`, then run `python3 $S/style_card.py $W` to produce a style card. If the user is present, send the style card for confirmation.
+3. **Organise deck.json** — transcribe from `deck.draft.json` per `references/deck_schema.md`. Copy text verbatim, writing local bolding as `**fragment**`; rebuild text inside images as native structures such as `diagram`; carry `notes` over as-is; write the `meta.anchor` visual anchor. Small labels on the original pages (section tape like "01 · Overview") go into that page's `kicker`, and numbering carried by an item (01, 02) goes into the item's `num`, so that no characters are lost when switching to any list bullet. Formulas typed with the equation editor in the original are automatically converted to plain-text formulas during parsing (e.g. V′(x) = (a−2x)(a−6x)) and transcribed verbatim as usual; use the `explain` page type for explanation pages with many formulas. SVG images are also converted to a PNG copy along the way (the png field in raw.json), and the layout uses the PNG. Small images such as logos and "AI generated" badges go into `stamps` and are kept as-is. Software screenshots in the original (images under `media/`) use the `screenshot` or `screenshots` page type; screenshots are placed into a unified window frame, and annotation points can be placed on the screenshot with `at`.
+4. Then follow "Layout, Asset Generation and Checks" below.
+
+## 11.3 Route B Generation
+
+Before starting, read `references/generate.md`, which contains all the rules for story line, conclusive titles, density, spoken notes and page-type selection.
+
+1. **Analyse the material** `python3 $S/analyze_source.py $W --file article.md` (if there is only a topic use `--topic "…"`, and you may add `--minutes 3`). When there is only a topic or facts need supplementing, search to verify first, and do not write what cannot be found.
+2. **Write deck.json**: define the story line first, then write page by page following "the shape of the content decides the page type" — write titles as conclusions, put keywords on screen, and put complete sentences in `notes`. For a deck with chapters, place a `toc` table of contents page after the cover (omitting items auto-lists the chapters); when too many card pages run in a row, insert a `question` big-question page or a `big_quote` big-quote page. When tool-tutorial material has screenshots, use `screenshot` for one image with a few operation points, and `screenshots` for several images showing a process. Besides the regular cards, steps and comparisons, there are also timeline, funnel, hub-and-spoke, 2x2 matrix, native tables, native charts and SWOT/PEST/Five Forces/Business Model Canvas; if unsure whether it fits, run `python3 $S/layout_info.py <layout-name>` to check capacity and examples.
+3. **Check the outline** `python3 $S/outline_check.py $W`, fix it until there are no ERRORs, and send the "titles only" from outline.md to the user for confirmation.
+4. **Set the style**: if there is a reference image, follow step 2 of Route A; if not, run `python3 $S/style_previews.py $W --auto` to produce three sample sheets (the user's own cover and content page), send `previews/sheet.png` for the user to choose, then `--apply <id>`. Presets are in `references/styles/`, fourteen sets in total, and each set's hard rules must be followed when laying out. For a meeting-room projection, write `"projection": true` in `meta`, and the minimum font size is raised.
+5. Then follow "Layout, Asset Generation and Checks" below.
+
+## 11.4 Layout, Asset Generation and Checks (Shared by Both Routes)
+
+1. **Layout planning** `python3 $S/plan_deck.py $W --level full` (add `--sheets` when an image-generation model is available, cutting several small illustrations out of one large image, which is more consistent in style and cheaper).
+   On a re-run, pages whose content has not changed keep their original plan (including hand-edited layouts and illustration prompts); to re-plan everything add `--reset`.
+   Review plan.json: whether the layout fits the content (`references/layouts.md`), whether the icons convey the meaning (`references/icons.md`), whether the illustration prompts are specific (`references/image_prompts.md`). When content exceeds the layout's capacity the script automatically switches layouts and writes it into the "capacity reminders" of design_spec.md; handle these before generating assets.
+   Send the generated design_spec.md to the user for confirmation before generating assets, since asset generation costs the most. Fast mode skips the confirmation.
+2. **Asset generation, assembly, self-check** in one command:
+   ```bash
+   python3 $S/pipeline.py $W
+   ```
+   It runs make_assets (illustrations, backgrounds, decorations; AI prompts are first written to disk under `prompts/`), build_deck, render, qa_check, compare_sheet and review in sequence.
+
+   | Check | Level | Handling |
+   |---|---|---|
+   | During beautification, original text is missing or altered; during generation, text from deck.json did not make it onto the page | ERROR | Fix against the original text or deck.json |
+   | Text overflow, overlapping text boxes, text crossing the bottom line (pressing onto the capsule bar or footer) | ERROR | Switch layout, split the page, or place manually with the `free` layout |
+   | More than 3 accent uses on one page, or accent area over 8% | WARN | Keep only one accent |
+   | Text pressing on an illustration, insufficient contrast, out of bounds, body text too small | WARN | Judge by looking at the image; most need fixing |
+   | Newly added header, page number, step number | INFO | Normal |
+
+3. **Five-dimension self-review**: look at `out/sheet.png` and the per-page PNGs, cross-reference the evidence counted by the scripts in `out/review.md`, and per `references/critique.md` score consistency, hierarchy, detail, communication and rhythm each from 0 to 10, writing three lists: keep, must fix, nice-to-fix. The "must fix" items are fixed before delivery; after fixing, re-run only the affected steps, at most three rounds.
+
+## 11.5 Delivery
+
+- `out/beautified.pptx`; the file name uses `original-name_beautified.pptx` or `theme.pptx`
+- Beautification attaches `out/compare.png` as a before/after comparison; generation attaches `out/sheet.png` as an overview sheet
+- Report the five-dimension self-review scores and the weakest dimension in one sentence
+- Explain in one or two sentences the style, the illustration source (which model or procedural illustration) and the fonts; for beautification state whether text was refined, and for generation state which content the user needs to verify further
+- When the user has connected a local folder, write back to where the material is located
+
+## 11.6 Hard Rules
+
+General
+1. All text is an editable text box; cards, capsule bars and dividers use native shapes; only backgrounds, illustrations, icons and brushes are images.
+2. The reference image is used only to extract the style — never cropped or pasted into the PPT.
+3. No text appears inside AI illustrations (graphical letters such as a product initial are the exception); prompts always carry negative constraints.
+4. Procedural illustration is the fallback; state it truthfully at delivery and do not present it as AI-generated.
+5. Do not modify the skill's own files while working on a deck. If you hit a problem with the skill, work around it to complete the delivery, then write the problem into the delivery notes and let the user decide whether to change the skill.
+
+Beautification
+6. By default, change no text; when the user allows refinement, list the changes one by one for the user to review.
+7. The page order and page count match the original, and notes are kept.
+
+Generation
+8. Use only data and facts from the material or that have been verified, and mark them with `source`; if you cannot find it, do not write it — never invent numbers. If chart data is changed, rewrite the titles and insights conclusions accordingly.
+9. Do the design only after the outline (titles only) is confirmed by the user; the same applies to the style and design specification, except in fast mode.
+
+## 11.7 Partial Edits
+
+- **Redo a single page**: change that page's `layout` and `icons` in plan.json, or edit `prompts/hero_NN.md`, then run `make_assets.py $W --only hero_NN --force` and `pipeline.py $W`
+- **Switch style**: swap style.json (a reference image or `style_previews.py --apply`), regenerate illustrations with `--force`; deck.json and plan.json can be reused
+- **Special page**: set that page's layout to `free` and write `elements` directly in plan (for the format see `references/layouts.md`)
+- **Light beautification only**: `plan_deck.py $W --level light`, no illustrations
+
+## 11.8 Common Problems
+
+- `soffice` conversion fails: rendering only affects the preview, not the delivered file; first confirm that the `source.pptx` produced by `extract_deck.py` opens
+- Preview fonts differ from the user's computer: the preview uses Source Han Sans in place of Microsoft YaHei, and the layout leaves margin — see `references/fonts.md`
+- Image generation fails: it automatically switches to procedural illustration, the error is recorded in `assets/manifest.json`, and at delivery state which pages use fallback images
+
+## 11.9 Execution Engine File Index
+
+| Path | Purpose |
+|---|---|
+| `references/generate.md` | Complete rules for the generation route (must-read before generating) |
+| `references/deck_schema.md` | deck.json fields and all page types |
+| `references/critique.md` | Scoring rules and common fixes for the five-dimension self-review |
+| `references/layouts.md` | Layout library, applicable scenarios, capacity, free-layout element format |
+| `scripts/layout_info.py` | Check layout capacity and deck.json examples; `--check $W` checks page by page for over-capacity |
+| `references/style_extraction.md` | Read style.json out of a reference image |
+| `references/styles/` | Fourteen style presets (index.json + one json per set, containing hard rules and imagery tags); samples are in `assets/style_gallery.jpg` (row N corresponds to gallery_row in index.json) |
+| `references/image_prompts.md` | Visual anchors and illustration prompts |
+| `references/imagegen_config.md` | Image-generation interface configuration |
+| `references/fonts.md` | Font selection and compatibility |
+| `references/icons.md` | Built-in icon list |
+| `INSTALL.md` / `install.sh` / `install.ps1` / `install.bat` | The execution engine's original installation instructions and scripts (used for standalone installation) |
+| `config.example.json` | Image-generation configuration template |
 
 # Reference Files
 
+## Methodology (Chapters 1–10)
+
 | File | Content |
 |---|---|
-| `references/logic-frameworks.md` | Pyramid Principle, MECE, SCQA in detail with examples |
-| `references/visual-theories.md` | The seven Gestalt laws, rule-of-thirds composition, Hick's Law in detail |
-| `references/structure-models.md` | 5W2H, SWOT, funnel, timeline in detail with layouts |
+| `references/logic-frameworks.md` | Detailed explanation and examples of the Pyramid Principle, MECE and SCQA |
+| `references/visual-theories.md` | Detailed explanation of the seven Gestalt laws, Rule-of-Thirds composition and Hick's Law |
+| `references/structure-models.md` | Detailed explanation and layout landing of 5W2H, SWOT, Funnel and Timeline |
 | `references/layout-patterns.md` | 38 page layout patterns + decision tree + pitfall checklist |
-| `references/design-basics.md` | The four CRAP principles, whitespace and contrast figures |
-| `references/checklist.md` | The complete delivery checklist and self-check methods |
-| `themes/*.md` | Pluggable colour themes (with colour values, type sizes and layout specifications) |
+| `references/design-basics.md` | The four CRAP principles, whitespace and contrast data |
+| `references/checklist.md` | Complete delivery checklist and self-check methods |
+
+## Execution Engine (Chapter 11)
+
+| File | Content |
+|---|---|
+| `references/generate.md` | Complete rules for the generation route |
+| `references/deck_schema.md` | deck.json fields and all page types |
+| `references/layouts.md` | Layout library, capacity and free-layout format |
+| `references/style_extraction.md` | Extract the style from a reference image |
+| `references/critique.md` | Five-dimension self-review rules |
+| `references/icons.md` | Built-in icon list |
+| `references/image_prompts.md` | Visual anchors and illustration prompts |
+| `references/imagegen_config.md` | Image-generation interface configuration |
+| `references/fonts.md` | Font selection and compatibility |
+| `scripts/*.py` | 23 execution scripts (parsing, planning, asset generation, assembly, checking, rendering) |
+| `assets/` | Icon library, style samples, third-party licences |
+
+## Themes and Styles
+
+| Path | Content |
+|---|---|
+| `themes/*.md` | Methodology colour themes (human-readable design specifications, including colour values, font sizes and layout rules) |
+| `references/styles/*.json` | The execution engine's fourteen style presets (machine format read by scripts) |
+
+## Other
+
+| Path | Content |
+|---|---|
+| `agents/openai.yaml` | Display name and default prompt |
+| `INSTALL.md` / `install.sh` / `install.ps1` / `install.bat` | The execution engine's original installation instructions and scripts (used for standalone installation) |
+| `config.example.json` | Image-generation configuration template |
+| `LICENSE-luobo-ppt` | MIT licence for the execution engine part ((c) 2026 zhouluobo (Zhou Luobo)) |
