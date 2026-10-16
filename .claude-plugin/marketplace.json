@@ -9,7 +9,7 @@
     {
       "name": "ppt-design-skills",
       "source": "./",
-      "description": "A general-purpose PPT / deck design methodology: logic layer (Pyramid Principle, MECE, SCQA), visual layer (Gestalt, rule of thirds, Hick's law, CRAP), structure layer (5W2H, SWOT, funnel, timeline), numeric specs, wall-of-text handling, and pluggable colour themes.",
+      "description": "A PPT / deck design methodology plus an execution engine: logic layer (Pyramid Principle, MECE, SCQA), visual layer (Gestalt, rule of thirds, Hick's law, CRAP), structure layer (5W2H, SWOT, funnel, timeline), numeric specs, wall-of-text handling, and an engine that generates or beautifies editable native .pptx with 14 style presets and a five-dimension self-review.",
       "category": "productivity",
       "keywords": [
         "ppt",
@@ -17,6 +17,7 @@
         "deck",
         "presentation",
         "design",
+        "pptx",
         "productivity"
       ]
     }
