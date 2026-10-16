@@ -1,0 +1,69 @@
+{
+  "palette": {
+    "primary": "B4492F",
+    "primary_dark": "7E2F1D",
+    "accent": "E9C46A",
+    "bg_top": "F3ECDD",
+    "bg_bottom": "FBF7EE",
+    "surface": "FFFDF7",
+    "tint": "F4E6D6",
+    "text": "2E2620",
+    "muted": "635850",
+    "on_primary": "FFFFFF",
+    "line": "E3D6C1"
+  },
+  "fonts": {
+    "heading_ea": "Microsoft YaHei",
+    "body_ea": "Microsoft YaHei",
+    "heading_latin": "Georgia",
+    "body_latin": "Arial",
+    "display_latin": "Georgia"
+  },
+  "shape": {
+    "radius": 0.05,
+    "shadow": false,
+    "card_alpha": 0.92,
+    "depth": "ring"
+  },
+  "decor": {
+    "header": true,
+    "leaf": false,
+    "brush": true,
+    "brush_color": "accent",
+    "title_mark": true,
+    "sparkles": false,
+    "closing_dark": true,
+    "bullet": "dash",
+    "emphasis": "color",
+    "chrome": "standard"
+  },
+  "background": {
+    "decor": [
+      "grain",
+      "blobs"
+    ],
+    "cover_decor": [
+      "grain",
+      "blobs"
+    ],
+    "closing_decor": [
+      "grain"
+    ]
+  },
+  "illustration": {
+    "style_prompt": "hand-drawn editorial ink illustration with light watercolor wash, warm paper tones, brick red and ochre accents, thoughtful and quiet, visible pen lines",
+    "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text",
+    "fallback_look": "flat"
+  },
+  "emphasis_color": "primary",
+  "name": "paper-notes",
+  "label": "纸感手记",
+  "rules": [
+    "卡片几乎直角、不加阴影，像贴在纸上的便签",
+    "砖红色只给标题强调和重点卡，不做大块底色",
+    "插画保留手绘线条感，不要光滑的 3D"
+  ],
+  "forbid": {
+    "pure_white": true
+  }
+}
