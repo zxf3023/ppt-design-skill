@@ -1,0 +1,74 @@
+{
+  "palette": {
+    "primary": "2E3033",
+    "primary_dark": "1E2022",
+    "accent": "B5DB6A",
+    "bg_top": "FFFFFF",
+    "bg_bottom": "F6F7F3",
+    "surface": "FFFFFF",
+    "tint": "EEF5DE",
+    "text": "222426",
+    "muted": "666A6E",
+    "on_primary": "FFFFFF",
+    "line": "E0E3DA"
+  },
+  "fonts": {
+    "heading_ea": "Microsoft YaHei",
+    "body_ea": "Microsoft YaHei",
+    "heading_latin": "Arial",
+    "body_latin": "Arial",
+    "display_latin": "Arial Black"
+  },
+  "shape": {
+    "radius": 0.12,
+    "shadow": false,
+    "card_alpha": 1.0,
+    "depth": "flat"
+  },
+  "decor": {
+    "header": true,
+    "leaf": false,
+    "brush": true,
+    "brush_color": "accent",
+    "title_mark": true,
+    "sparkles": false,
+    "closing_dark": false,
+    "number_style": "plain",
+    "watermark_color": "accent@0.35",
+    "bullet": "dash",
+    "emphasis": "color",
+    "chrome": "standard"
+  },
+  "background": {
+    "decor": [
+      "torn"
+    ],
+    "cover_decor": [
+      "torn"
+    ],
+    "closing_decor": [
+      "torn"
+    ],
+    "band_color": "primary"
+  },
+  "emphasis_color": "accent",
+  "illustration": {
+    "style_prompt": "flat grayscale icon-style illustration with a few lime green accents, simple shapes, clean white background",
+    "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text",
+    "fallback_look": "flat",
+    "skip_layouts": [
+      "section",
+      "closing"
+    ]
+  },
+  "rules": [
+    "大块深灰只出现在撕纸边的色带里",
+    "荧绿做数字底、胶囊和笔刷，不用来写字",
+    "数据页优先，图表用深灰加荧绿两色"
+  ],
+  "name": "ink-lime",
+  "label": "黑灰荧绿",
+  "forbid": {
+    "shadow": true
+  }
+}
