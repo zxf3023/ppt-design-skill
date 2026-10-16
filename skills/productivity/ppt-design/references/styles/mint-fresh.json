@@ -1,0 +1,71 @@
+{
+  "palette": {
+    "primary": "17806D",
+    "primary_dark": "0F5A4D",
+    "accent": "F5D76E",
+    "bg_top": "C3EDDB",
+    "bg_bottom": "F4FBF8",
+    "surface": "FFFFFF",
+    "tint": "DDF3EA",
+    "text": "1E3A33",
+    "muted": "50655E",
+    "on_primary": "FFFFFF",
+    "line": "CDE8DD"
+  },
+  "fonts": {
+    "heading_ea": "Microsoft YaHei",
+    "body_ea": "Microsoft YaHei",
+    "heading_latin": "Arial",
+    "body_latin": "Arial",
+    "display_latin": "Arial Black"
+  },
+  "shape": {
+    "radius": 0.18,
+    "shadow": true,
+    "card_alpha": 0.88,
+    "depth": "shadow"
+  },
+  "decor": {
+    "header": true,
+    "leaf": true,
+    "brush": true,
+    "brush_color": "accent",
+    "title_mark": true,
+    "sparkles": true,
+    "closing_dark": true,
+    "bullet": "icon",
+    "emphasis": "color",
+    "chrome": "standard"
+  },
+  "background": {
+    "decor": [
+      "blobs",
+      "bokeh",
+      "arcs"
+    ],
+    "cover_decor": [
+      "blobs",
+      "clouds",
+      "hills",
+      "bokeh"
+    ],
+    "closing_decor": [
+      "blobs",
+      "bokeh",
+      "arcs"
+    ]
+  },
+  "illustration": {
+    "style_prompt": "flat vector illustration with gentle gradients, mint and teal greens with a touch of butter yellow, rounded friendly shapes, airy and optimistic, soft contact shadows",
+    "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text"
+  },
+  "emphasis_color": "primary",
+  "name": "mint-fresh",
+  "label": "薄荷清新",
+  "rules": [
+    "一页最多一处黄色笔刷高亮",
+    "卡片一律大圆角白底，不用直角",
+    "插画只用绿色系加少量黄色，不出现第三种鲜艳色"
+  ],
+  "forbid": {}
+}
