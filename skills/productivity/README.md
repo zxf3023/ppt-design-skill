@@ -6,4 +6,4 @@ General workflow tools, not code-specific.
 
 Model- or user-reachable (rich trigger phrasing so the model can reach for them).
 
-- **[ppt-design](./ppt-design/SKILL.md)**: Design and build a deck from first principles: outline the narrative, structure the logic, lay out pages, pick colour and type, compress walls of text, and build chart and data pages. Ships three theory frameworks (logic, visual, structure) and pluggable colour themes.
+- **[ppt-design](./ppt-design/SKILL.md)**: Design and produce a deck. Methodology (logic, visual and structure frameworks, type scale, whitespace, colour, wall-of-text handling, page templates, narrative pacing) plus an execution engine that generates a deck from a topic, article, script or outline, or beautifies an existing `.pptx` against a reference image without changing its text. Ships 14 style presets, an icon library and a five-dimension self-review chain.
