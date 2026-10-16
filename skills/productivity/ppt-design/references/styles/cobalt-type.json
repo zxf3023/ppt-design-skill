@@ -1,0 +1,74 @@
+{
+  "palette": {
+    "primary": "1238E6",
+    "primary_dark": "0B26B0",
+    "accent": "E98BA0",
+    "bg_top": "F3F3F1",
+    "bg_bottom": "EEEEEB",
+    "surface": "FFFFFF",
+    "tint": "E6EBFF",
+    "text": "121212",
+    "muted": "585A66",
+    "on_primary": "FFFFFF",
+    "line": "D6D8E2",
+    "strong": "1238E6"
+  },
+  "fonts": {
+    "heading_ea": "Microsoft YaHei",
+    "body_ea": "Microsoft YaHei",
+    "heading_latin": "Arial",
+    "body_latin": "Arial",
+    "display_latin": "Arial Black"
+  },
+  "shape": {
+    "radius": 0.22,
+    "shadow": false,
+    "card_alpha": 1.0,
+    "depth": "flat"
+  },
+  "decor": {
+    "header": false,
+    "leaf": false,
+    "brush": false,
+    "title_mark": false,
+    "sparkles": false,
+    "closing_dark": true,
+    "number_style": "plain",
+    "watermark_color": "primary@0.09",
+    "bullet": "number",
+    "emphasis": "color",
+    "chrome": "editorial"
+  },
+  "background": {
+    "decor": [],
+    "cover_decor": [
+      "band"
+    ],
+    "closing_decor": []
+  },
+  "prefer_layouts": {
+    "toc": "toc_row",
+    "cover": "cover_type"
+  },
+  "illustration": {
+    "style_prompt": "bold editorial duotone illustration in cobalt blue and white, graphic poster feel, strong negative space",
+    "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text",
+    "fallback_look": "flat",
+    "skip_layouts": [
+      "cover_hero",
+      "section",
+      "closing"
+    ]
+  },
+  "rules": [
+    "靠字号和钴蓝撑画面，装饰越少越好",
+    "标题、大数字统一用钴蓝，正文用近黑",
+    "粉色只用来点一两个词，全篇不超过三处"
+  ],
+  "emphasis_color": "accent",
+  "name": "cobalt-type",
+  "label": "钴蓝字体",
+  "forbid": {
+    "shadow": true
+  }
+}
