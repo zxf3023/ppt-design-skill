@@ -18,10 +18,13 @@ Skills in `productivity/` and `engineering/` also have a human-facing docs page 
 
 ```
 skills/<bucket>/<skill-name>/
-├── SKILL.md          # required; YAML frontmatter with `name` and `description`
+├── SKILL.md           # required; YAML frontmatter with `name` and `description`
 ├── agents/openai.yaml # required; display_name + short_description
-├── references/       # optional; loaded on demand, one topic per file
-└── themes/           # optional; pluggable variants
+├── references/        # optional; loaded on demand, one topic per file
+├── themes/            # optional; pluggable variants
+├── scripts/           # optional; the deterministic work the skill drives
+├── assets/            # optional; libraries and images the scripts read
+└── config.example.json # optional; configuration template
 ```
 
 ### Frontmatter
