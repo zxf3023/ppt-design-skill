@@ -1,0 +1,78 @@
+{
+  "palette": {
+    "primary": "1F7A5A",
+    "primary_dark": "165C43",
+    "accent": "F2B632",
+    "bg_top": "FBF6E9",
+    "bg_bottom": "F7F0DD",
+    "surface": "FFFFFF",
+    "tint": "E7F2EC",
+    "text": "2A2A28",
+    "muted": "6A6456",
+    "on_primary": "FFFFFF",
+    "line": "E3DAC4"
+  },
+  "fonts": {
+    "heading_ea": "Microsoft YaHei",
+    "body_ea": "Microsoft YaHei",
+    "heading_latin": "Arial",
+    "body_latin": "Arial",
+    "display_latin": "Arial Black"
+  },
+  "shape": {
+    "radius": 0.03,
+    "shadow": false,
+    "card_alpha": 1.0,
+    "depth": "flat"
+  },
+  "decor": {
+    "header": true,
+    "leaf": false,
+    "brush": false,
+    "title_mark": true,
+    "sparkles": false,
+    "closing_dark": false,
+    "number_style": "block",
+    "watermark_color": "accent@0.28",
+    "bullet": "number",
+    "emphasis": "color",
+    "chrome": "standard"
+  },
+  "background": {
+    "decor": [
+      "geo"
+    ],
+    "cover_decor": [
+      "geo"
+    ],
+    "closing_decor": [
+      "geo"
+    ],
+    "geo_colors": [
+      "2F5DA8",
+      "F2B632",
+      "D8412F",
+      "1F7A5A"
+    ]
+  },
+  "illustration": {
+    "style_prompt": "flat bauhaus style illustration built from simple circles, triangles and squares in red, yellow, green and blue on a cream background, no gradients",
+    "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text",
+    "fallback_look": "flat",
+    "skip_layouts": [
+      "section"
+    ]
+  },
+  "rules": [
+    "四个几何色只出现在装饰和图表里，正文区保持米白",
+    "卡片直角或极小圆角，不加阴影",
+    "图表按红黄绿蓝顺序取色"
+  ],
+  "emphasis_color": "accent",
+  "name": "geo-blocks",
+  "label": "几何色块",
+  "forbid": {
+    "shadow": true,
+    "radius_over": 0.05
+  }
+}
