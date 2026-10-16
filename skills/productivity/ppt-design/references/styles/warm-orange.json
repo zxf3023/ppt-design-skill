@@ -1,0 +1,68 @@
+{
+  "palette": {
+    "primary": "D9582B",
+    "primary_dark": "9E3A17",
+    "accent": "2B8C86",
+    "bg_top": "FFE3D3",
+    "bg_bottom": "FFF8F3",
+    "surface": "FFFFFF",
+    "tint": "FDE7DB",
+    "text": "3A2118",
+    "muted": "6E5147",
+    "on_primary": "FFFFFF",
+    "line": "F4D6C7"
+  },
+  "fonts": {
+    "heading_ea": "Microsoft YaHei",
+    "body_ea": "Microsoft YaHei",
+    "heading_latin": "Arial",
+    "body_latin": "Arial",
+    "display_latin": "Arial Black"
+  },
+  "shape": {
+    "radius": 0.22,
+    "shadow": true,
+    "card_alpha": 0.9,
+    "depth": "shadow"
+  },
+  "decor": {
+    "header": true,
+    "leaf": false,
+    "brush": true,
+    "brush_color": "F6C177",
+    "title_mark": true,
+    "sparkles": true,
+    "closing_dark": true,
+    "bullet": "icon",
+    "emphasis": "color",
+    "chrome": "standard"
+  },
+  "background": {
+    "decor": [
+      "blobs",
+      "bokeh"
+    ],
+    "cover_decor": [
+      "blobs",
+      "bokeh",
+      "arcs"
+    ],
+    "closing_decor": [
+      "blobs",
+      "bokeh"
+    ]
+  },
+  "illustration": {
+    "style_prompt": "playful flat illustration, warm tangerine and coral with teal accents, chunky rounded shapes, cheerful and energetic, simple soft shading",
+    "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text"
+  },
+  "emphasis_color": "primary",
+  "name": "warm-orange",
+  "label": "暖橙活力",
+  "rules": [
+    "橙色做主色、青绿色只做点缀，比例大约八比二",
+    "卡片圆角可以大一些，显得亲切",
+    "一页只放一个视觉焦点，别让橙色到处都是"
+  ],
+  "forbid": {}
+}
