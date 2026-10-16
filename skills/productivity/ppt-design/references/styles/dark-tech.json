@@ -1,0 +1,69 @@
+{
+  "palette": {
+    "primary": "3864E6",
+    "primary_dark": "2A4BD6",
+    "accent": "38E1C6",
+    "bg_top": "0E1330",
+    "bg_bottom": "1B2250",
+    "surface": "232C63",
+    "tint": "2D3A7A",
+    "text": "EEF2FF",
+    "muted": "AAB4D9",
+    "on_primary": "FFFFFF",
+    "line": "3A4790"
+  },
+  "fonts": {
+    "heading_ea": "Microsoft YaHei",
+    "body_ea": "Microsoft YaHei",
+    "heading_latin": "Arial",
+    "body_latin": "Arial",
+    "display_latin": "Arial Black"
+  },
+  "shape": {
+    "radius": 0.14,
+    "shadow": true,
+    "card_alpha": 0.75,
+    "depth": "ring"
+  },
+  "decor": {
+    "header": true,
+    "leaf": false,
+    "brush": true,
+    "brush_color": "primary",
+    "title_mark": true,
+    "sparkles": true,
+    "closing_dark": false,
+    "bullet": "icon",
+    "emphasis": "color",
+    "chrome": "standard"
+  },
+  "background": {
+    "decor": [
+      "blobs",
+      "grid",
+      "bokeh"
+    ],
+    "cover_decor": [
+      "blobs",
+      "bokeh",
+      "arcs"
+    ],
+    "closing_decor": [
+      "blobs",
+      "bokeh"
+    ]
+  },
+  "illustration": {
+    "style_prompt": "glowing semi-3D tech illustration, deep navy scene with electric blue and cyan light, translucent glass materials, subtle neon rim light, futuristic but clean",
+    "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text"
+  },
+  "emphasis_color": "accent",
+  "name": "dark-tech",
+  "label": "深色科技",
+  "rules": [
+    "背景始终深色，文字用近白色",
+    "青色只用于强调和发光，不做大面积底色",
+    "插画要有发光感，但画面四周保持暗"
+  ],
+  "forbid": {}
+}
