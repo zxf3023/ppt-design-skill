@@ -1,0 +1,68 @@
+{
+  "palette": {
+    "primary": "6F55C4",
+    "primary_dark": "4A3690",
+    "accent": "FFB36B",
+    "bg_top": "EBE4FB",
+    "bg_bottom": "FCFAFF",
+    "surface": "FFFFFF",
+    "tint": "EEE8FB",
+    "text": "2A2140",
+    "muted": "5E5575",
+    "on_primary": "FFFFFF",
+    "line": "E0D8F4"
+  },
+  "fonts": {
+    "heading_ea": "Microsoft YaHei",
+    "body_ea": "Microsoft YaHei",
+    "heading_latin": "Arial",
+    "body_latin": "Arial",
+    "display_latin": "Arial"
+  },
+  "shape": {
+    "radius": 0.24,
+    "shadow": true,
+    "card_alpha": 0.85,
+    "depth": "whisper"
+  },
+  "decor": {
+    "header": true,
+    "leaf": false,
+    "brush": true,
+    "brush_color": "accent@0.55",
+    "title_mark": false,
+    "sparkles": true,
+    "closing_dark": true,
+    "bullet": "icon",
+    "emphasis": "color",
+    "chrome": "standard"
+  },
+  "background": {
+    "decor": [
+      "blobs",
+      "bokeh"
+    ],
+    "cover_decor": [
+      "blobs",
+      "clouds",
+      "bokeh"
+    ],
+    "closing_decor": [
+      "blobs",
+      "bokeh"
+    ]
+  },
+  "illustration": {
+    "style_prompt": "soft 3D clay illustration, lavender and lilac pastels with peach highlights, rounded puffy forms, dreamy diffused light, gentle and calming",
+    "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text"
+  },
+  "emphasis_color": "primary",
+  "name": "lavender-soft",
+  "label": "雾紫柔和",
+  "rules": [
+    "留白要多，一页一句话最好",
+    "不用标题下的小横条，靠字号区分层级",
+    "所有形状尽量圆润，避免尖角和粗线"
+  ],
+  "forbid": {}
+}
