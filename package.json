@@ -1,8 +1,8 @@
 {
   "name": "ppt-design-skill",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "A general-purpose PPT / deck design methodology as an agent skill",
+  "description": "A PPT / deck design methodology plus an execution engine, as one agent skill",
   "repository": {
     "type": "git",
     "url": "https://github.com/zxf3023/ppt-design-skill"
