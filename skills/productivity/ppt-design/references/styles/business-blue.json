@@ -1,0 +1,68 @@
+{
+  "palette": {
+    "primary": "1F5FBF",
+    "primary_dark": "143F80",
+    "accent": "F2A93B",
+    "bg_top": "E3ECFA",
+    "bg_bottom": "F8FAFE",
+    "surface": "FFFFFF",
+    "tint": "E1EBFA",
+    "text": "16233A",
+    "muted": "4E5B70",
+    "on_primary": "FFFFFF",
+    "line": "D3DEEF"
+  },
+  "fonts": {
+    "heading_ea": "Microsoft YaHei",
+    "body_ea": "Microsoft YaHei",
+    "heading_latin": "Arial",
+    "body_latin": "Arial",
+    "display_latin": "Arial Black"
+  },
+  "shape": {
+    "radius": 0.08,
+    "shadow": true,
+    "card_alpha": 0.95,
+    "depth": "whisper"
+  },
+  "decor": {
+    "header": true,
+    "leaf": false,
+    "brush": false,
+    "title_mark": true,
+    "sparkles": false,
+    "closing_dark": true,
+    "bullet": "icon",
+    "emphasis": "color",
+    "chrome": "standard"
+  },
+  "background": {
+    "decor": [
+      "grid",
+      "blobs"
+    ],
+    "cover_decor": [
+      "grid",
+      "blobs",
+      "arcs"
+    ],
+    "closing_decor": [
+      "grid",
+      "blobs"
+    ]
+  },
+  "illustration": {
+    "style_prompt": "clean isometric business illustration, cobalt blue and white with small amber accents, crisp geometry, glassy panels, calm and trustworthy",
+    "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text",
+    "fallback_look": "flat"
+  },
+  "emphasis_color": "primary",
+  "name": "business-blue",
+  "label": "商务蓝",
+  "rules": [
+    "圆角保持很小，整体方正克制",
+    "强调色琥珀黄只给最关键的一个数字或按钮",
+    "不用手绘笔刷和叶片这类装饰"
+  ],
+  "forbid": {}
+}
