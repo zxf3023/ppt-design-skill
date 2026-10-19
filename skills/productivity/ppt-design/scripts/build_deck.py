@@ -502,8 +502,8 @@ class Builder:
             page = f"{s['n']:02d} / {self.meta.get('total') or self.total:02d}"
         src = s.get("source") or s.get("footnote")
         if src:
-            # "footnote" is printed as written; "source" gets a 来源 label unless it has one
-            src_txt = src if (s.get("footnote") and not s.get("source")) or SOURCE_LABEL.match(src) else f"来源：{src}"
+            # "footnote" is printed as written; "source" gets a source label unless it has one
+            src_txt = src if (s.get("footnote") and not s.get("source")) or SOURCE_LABEL.match(src) else f"Source: {src}"
             # under the pill when there is one, otherwise on its own line above the footer row
             yb = 7.12 if (s.get("takeaway") and not info.get("uses_takeaway")) else 6.52
             els.append(L.T(src_txt, CANVAS_W / 2 - 3.2, yb, 6.4, 0.26, 10.5, "subtle", align="c", valign="m"))
@@ -564,8 +564,8 @@ class Builder:
         els.append(L.T(folio, CANVAS_W - L.MX - 2, 6.88, 2, 0.3, 10.5, "subtle", True, "display", align="r", valign="m"))
         src = s.get("source") or s.get("footnote")
         if src:
-            # "footnote" is printed as written; "source" gets a 来源 label unless it has one
-            src_txt = src if (s.get("footnote") and not s.get("source")) or SOURCE_LABEL.match(src) else f"来源：{src}"
+            # "footnote" is printed as written; "source" gets a source label unless it has one
+            src_txt = src if (s.get("footnote") and not s.get("source")) or SOURCE_LABEL.match(src) else f"Source: {src}"
             els.append(L.T(src_txt, CANVAS_W / 2 - 3.2, 6.88, 6.4, 0.3, 10.5, "subtle", align="c", valign="m"))
         return els
 
