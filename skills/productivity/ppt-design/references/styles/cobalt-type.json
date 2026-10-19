@@ -61,13 +61,13 @@
     ]
   },
   "rules": [
-    "靠字号和钴蓝撑画面，装饰越少越好",
-    "标题、大数字统一用钴蓝，正文用近黑",
-    "粉色只用来点一两个词，全篇不超过三处"
+    "Type size and cobalt carry the page; the less decoration the better",
+    "Headings and big numbers in cobalt, body text in near-black",
+    "Pink highlights one or two words; never more than three in the whole deck"
   ],
   "emphasis_color": "accent",
   "name": "cobalt-type",
-  "label": "钴蓝字体",
+  "label": "Cobalt Type",
   "forbid": {
     "shadow": true
   }
