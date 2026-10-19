@@ -8,9 +8,9 @@ Usage:
 
 Checks (rules are explained in references/generate.md)
   titles     every content slide has a title that states a point; bare topic labels such as
-             "背景介绍" "注意事项" "总结" are flagged; length 4-22 characters
+             "Background" "Notes" "Summary" are flagged; length 4-22 characters
   ghost      prints all titles in order: read them alone, they should tell the story
-  density    on-screen text per slide against meta.density (low: 口播/演讲, high: 阅读/汇报)
+  density    on-screen text per slide against meta.density (low: oral/talk, high: reading/report)
   items      list length against the density limit, split the slide if exceeded
   notes      speaker notes present and roughly 40-260 characters when meta.notes is on
   pages      page count against analysis.json
@@ -61,7 +61,7 @@ def looks_like_topic(title):
     if not t:
         return False
     for w in TOPIC_WORDS:
-        # "X介绍" / "注意事项" / "总结" alone = a label; allow them inside a longer claim
+        # "X-intro" / "notes" / "summary" alone = a label; allow them inside a longer claim
         if t.endswith(w) and clen(t) <= len(w) + 6:
             return True
     return t.startswith(("什么是", "如何", "怎么")) and clen(t) <= 8 and not re.search(r"[，,：:]", t)
@@ -94,13 +94,13 @@ def main():
         if typ in NO_TITLE_TYPES:
             continue
         if not title:
-            add("ERROR", n, "缺少标题")
+            add("ERROR", n, "missing title")
             continue
         L = clen(strip_marks(title))
         if looks_like_topic(title):
-            add("WARN", n, f"标题像话题标签，改成一句结论：{title}")
+            add("WARN", n, f"title looks like a topic label; turn it into a conclusion: {title}")
         if L < 4 or L > 22:
-            add("WARN", n, f"标题长度 {L}，建议 4 到 22：{title}")
+            add("WARN", n, f"title length {L}, recommended 4 to 22: {title}")
     # density + items + notes
     for s in slides:
         n, typ = s.get("n"), s.get("type", "")
@@ -108,16 +108,16 @@ def main():
         total = sum(clen(t) for t in txt)
         cap = lim["chars"] * (1.4 if typ in ("cover", "closing") else 1)
         if total > cap:
-            add("WARN", n, f"屏幕文字约 {total} 字，超过 {density} 密度上限 {int(cap)}，考虑拆页或把展开内容挪进备注")
+            add("WARN", n, f"on-screen text ~{total} units, over the {density} density cap of {int(cap)}; split the slide or move the detail into notes")
         items = s.get("items", [])
         if len(items) > lim["items"]:
-            add("WARN", n, f"{len(items)} 条要点，超过 {density} 密度上限 {lim['items']} 条，建议拆成两页")
+            add("WARN", n, f"{len(items)} items, over the {density} density cap of {lim['items']}; split into two slides")
         if notes_on and typ not in ("section", "toc"):
             nt = strip_marks(s.get("notes", ""))
             if not nt:
-                add("WARN", n, "没有口播备注")
+                add("WARN", n, "no speaker notes")
             elif clen(nt) < 40 or clen(nt) > 260:
-                add("WARN", n, f"备注约 {clen(nt)} 字，口播一页建议 40 到 260 字")
+                add("WARN", n, f"notes ~{clen(nt)} units; 40 to 260 units recommended per slide")
     # layout capacity: does the content fit the layout it will get?
     for s in slides:
         lay = s.get("layout") or LY.TYPE_TO_LAYOUTS.get(s.get("type"), ["list_icons"])[0]
@@ -125,59 +125,59 @@ def main():
         if probs:
             alts = [a for a in LY.TYPE_TO_LAYOUTS.get(s.get("type"), [])[1:] + ["list_icons", "grid_cards"]
                     if a != lay and not capacity.check(s, a)]
-            hint = f"；可改用 {alts[0]}" if alts and not s.get("layout") else "；精简文字或拆页"
-            add("WARN", s.get("n"), f"{lay} 装不下：" + "；".join(probs[:3]) + hint)
+            hint = f"; try {alts[0]} instead" if alts and not s.get("layout") else "; trim the text or split the slide"
+            add("WARN", s.get("n"), f"{lay} overflows: " + "; ".join(probs[:3]) + hint)
     # pages
     an = work / "analysis.json"
     if an.exists():
         p = load_json(an).get("pages", {})
         if p and not (p.get("min", 0) <= len(slides) <= p.get("max", 999)):
-            add("WARN", 0, f"共 {len(slides)} 页，素材分析建议 {p.get('min')} 到 {p.get('max')} 页")
+            add("WARN", 0, f"{len(slides)} slides, the source analysis suggests {p.get('min')} to {p.get('max')}")
     # flow
     for i in range(2, len(slides)):
         t = [slides[j].get("type") for j in (i - 2, i - 1, i)]
         if t[0] == t[1] == t[2] and t[0] not in ("section",):
-            add("WARN", slides[i].get("n"), f"连续三页都是 {t[0]}，换一种页型或版式")
+            add("WARN", slides[i].get("n"), f"three {t[0]} slides in a row; switch the type or layout")
     if len(slides) > 15 and not any(s.get("type") == "section" for s in slides):
-        add("WARN", 0, "超过 15 页，建议加章节分隔页（type: section）")
+        add("WARN", 0, "over 15 slides; add section dividers (type: section)")
     if slides and slides[-1].get("type") == "closing":
         h = strip_marks(slides[-1].get("headline") or slides[-1].get("title") or "")
         if re.fullmatch(r"(谢谢|感谢)(观看|收听|聆听|大家)?[！!。]?|Thanks?.*|Q&A", h.strip()):
-            add("WARN", slides[-1].get("n"), "结尾页只有致谢，换成一句结论或行动号召")
+            add("WARN", slides[-1].get("n"), "the closing slide only says thanks; use a conclusion or call to action")
     if slides and slides[0].get("type") != "cover":
-        add("WARN", slides[0].get("n"), "第一页不是封面")
+        add("WARN", slides[0].get("n"), "the first slide is not a cover")
 
     # outline.md for the user
-    out = [f"# {meta.get('title', '')} 大纲", ""]
-    out.append(f"场景 {meta.get('scenario', '')} · 受众 {meta.get('audience', '')} · 密度 {density} · 共 {len(slides)} 页")
+    out = [f"# {meta.get('title', '')} outline", ""]
+    out.append(f"Scenario {meta.get('scenario', '')} · Audience {meta.get('audience', '')} · Density {density} · {len(slides)} slides")
     if meta.get("storyline"):
-        out += ["", f"故事线：{meta['storyline']}"]
-    out += ["", "## 只读标题（幽灵稿）", ""] + [f"{n}. {t}" for n, _, t in ghost]
-    out += ["", "## 逐页", ""]
+        out += ["", f"Storyline: {meta['storyline']}"]
+    out += ["", "## Titles only (ghost deck)", ""] + [f"{n}. {t}" for n, _, t in ghost]
+    out += ["", "## Slide by slide", ""]
     for s in slides:
         title = s.get("title") or s.get("headline") or s.get("question") or s.get("quote") or ""
         out.append(f"### {s.get('n')} · {s.get('type', '')} · {strip_marks(title)}")
         if s.get("purpose"):
-            out.append(f"- 作用：{s['purpose']}")
+            out.append(f"- Purpose: {s['purpose']}")
         body = [t for t in screen_text(s) if t != strip_marks(title)]
         if body:
-            out.append("- 屏幕：" + " / ".join(body))
+            out.append("- On screen: " + " / ".join(body))
         if s.get("notes"):
-            out.append("- 口播：" + strip_marks(s["notes"]))
+            out.append("- Speaker notes: " + strip_marks(s["notes"]))
         out.append("")
     (work / "outline.md").write_text("\n".join(out), encoding="utf-8")
 
-    print("幽灵稿（只读标题）")
+    print("Ghost deck (titles only)")
     for n, typ, t in ghost:
         print(f"  {n:>2}. [{typ}] {t}")
     print()
     order = {"ERROR": 0, "WARN": 1}
     for level, n, msg in sorted(issues, key=lambda x: (order[x[0]], x[1] or 0)):
-        where = f"第 {n} 页" if n else "整体"
-        print(f"[{level}] {where}：{msg}")
+        where = f"slide {n}" if n else "overall"
+        print(f"[{level}] {where}: {msg}")
     errs = sum(1 for i in issues if i[0] == "ERROR")
     warns = len(issues) - errs
-    print(f"\nERROR {errs}  WARN {warns}   已写出 {work/'outline.md'}")
+    print(f"\nERROR {errs}  WARN {warns}   wrote {work/'outline.md'}")
     sys.exit(1 if errs or (a.strict and warns) else 0)
 
 
