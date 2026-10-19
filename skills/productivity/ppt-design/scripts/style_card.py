@@ -47,13 +47,13 @@ def main():
     P = S.palette
     bd.rounded_rectangle([60, 150, 560, 400], radius=26, fill=hex_to_rgb(P["surface"]) + (225,),
                          outline=hex_to_rgb(P["line"]), width=2)
-    bd.text((60, 60), "标题示例 Heading", fill=hex_to_rgb(P["text"]), font=get_font(44, True))
+    bd.text((60, 60), "Heading sample", fill=hex_to_rgb(P["text"]), font=get_font(44, True))
     bd.rounded_rectangle([60, 124, 120, 132], radius=4, fill=hex_to_rgb(P["primary"]))
     bd.ellipse([90, 185, 150, 245], fill=hex_to_rgb(P["tint"]))
-    bd.text((175, 190), "卡片标题", fill=hex_to_rgb(P["primary_dark"]), font=get_font(30, True))
-    bd.text((95, 270), "正文示例，说明文字用这个颜色。", fill=hex_to_rgb(P["muted"]), font=get_font(24))
+    bd.text((175, 190), "Card title", fill=hex_to_rgb(P["primary_dark"]), font=get_font(30, True))
+    bd.text((95, 270), "Body sample; description text uses this color.", fill=hex_to_rgb(P["muted"]), font=get_font(24))
     bd.rounded_rectangle([95, 320, 330, 370], radius=25, fill=hex_to_rgb(P["primary"]))
-    bd.text((125, 330), "强调按钮", fill=hex_to_rgb(P["on_primary"]), font=get_font(24, True))
+    bd.text((125, 330), "Accent button", fill=hex_to_rgb(P["on_primary"]), font=get_font(24, True))
     glyph = "A"
     if (work / "deck.json").exists():
         from common import load_json
@@ -71,10 +71,10 @@ def main():
         d.text((x, y + 188), "#" + c, fill=(120, 120, 120), font=fr)
         x += 190
     f = S.fonts
-    d.text((40, 480), f"标题字体 {f['heading_ea']} / {f['heading_latin']}", fill=(40, 40, 40), font=fr)
-    d.text((40, 512), f"正文字体 {f['body_ea']} / {f['body_latin']}", fill=(40, 40, 40), font=fr)
+    d.text((40, 480), f"Heading font {f['heading_ea']} / {f['heading_latin']}", fill=(40, 40, 40), font=fr)
+    d.text((40, 512), f"Body font {f['body_ea']} / {f['body_latin']}", fill=(40, 40, 40), font=fr)
     ill = (S.illustration or {}).get("style_prompt", "")
-    d.text((40, 552), "插画风格", fill=(40, 40, 40), font=fr)
+    d.text((40, 552), "Illustration style", fill=(40, 40, 40), font=fr)
     words, line, yy = ill.split(), "", 582
     for wd in words:
         if len(line) + len(wd) > 52:
