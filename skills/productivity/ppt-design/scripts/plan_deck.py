@@ -64,15 +64,15 @@ HERO_IDEAS = {
 }
 
 FOCUS = {
-    "cover_hero": "大标题和主视觉", "statement_number": "大数字", "rows_side": "对照卡片", "stats_row": "数字",
-    "media_text": "左侧示意图", "side_cards": "主色重点卡片", "quote_cards": "例句卡片", "statement_hero": "一句主张",
-    "cards_quote": "右侧金句", "list_icons": "要点列表", "grid_cards": "要点卡片", "steps_flow": "步骤编号和连线",
-    "compare_split": "左右对比", "cycle": "循环圆环", "pyramid": "层级", "section": "章节编号", "closing": "行动号召按钮",
-    "toc": "章节编号和标题", "toc_row": "章节编号和标题",
-    "cover_type": "超大标题和强调词", "question": "一句大问句", "big_quote": "引文本身",
-    "timeline": "时间轴和当前节点", "funnel": "逐层收窄的漏斗", "hub": "中心圆和连线", "matrix": "高亮象限",
-    "table": "高亮列", "chart": "图表里的高亮数据", "framework": "框架全貌",
-    "free": "自定",
+    "cover_hero": "Large title and hero visual", "statement_number": "Large number", "rows_side": "Comparison cards", "stats_row": "Numbers",
+    "media_text": "Left-hand diagram", "side_cards": "Primary-color emphasis card", "quote_cards": "Example-quote cards", "statement_hero": "A single claim",
+    "cards_quote": "Pull quote on the right", "list_icons": "Bullet list", "grid_cards": "Bullet cards", "steps_flow": "Step numbers and connectors",
+    "compare_split": "Left/right comparison", "cycle": "Cycle ring", "pyramid": "Hierarchy", "section": "Section number", "closing": "Call-to-action button",
+    "toc": "Section numbers and titles", "toc_row": "Section numbers and titles",
+    "cover_type": "Oversized title and emphasis words", "question": "One big question", "big_quote": "The quotation itself",
+    "timeline": "Timeline and current node", "funnel": "A funnel narrowing layer by layer", "hub": "Center circle and connectors", "matrix": "Highlighted quadrant",
+    "table": "Highlighted column", "chart": "Highlighted data in the chart", "framework": "The whole framework",
+    "free": "Custom",
 }
 
 SIZES = {"large": (1400, 1300), "side": (1400, 900), "corner": (1400, 830), "top": (1400, 1050)}
@@ -98,23 +98,23 @@ def write_spec(work, deck, plan):
         from common import load_style
         st = load_style(work / "style.json")
         P, F = st.palette, st.fonts
-        style_line = (f"{st.data.get('name', '')} · 主色 #{P['primary']} · 强调 #{P['accent']} · 背景 #{P['bg_top']}→#{P['bg_bottom']}"
-                      f" · 字体 {F['heading_ea']} / {F['heading_latin']}")
+        style_line = (f"{st.data.get('name', '')} · primary #{P['primary']} · accent #{P['accent']} · background #{P['bg_top']}→#{P['bg_bottom']}"
+                      f" · fonts {F['heading_ea']} / {F['heading_latin']}")
         rules = st.data.get("rules", [])
     except Exception:
-        style_line, rules = "（style.json 未就绪）", []
+        style_line, rules = "(style.json not ready)", []
     heroes = {x["id"]: x for x in plan["assets"] if x["kind"] == "hero"}
     for x in plan["assets"]:
         for it in x.get("items", []):
             heroes[it["id"]] = it
     by_n = {s["n"]: s for s in deck["slides"]}
-    lines = [f"# 设计规格 · {meta.get('title', '')}", "",
-             f"- 风格：{style_line}",
-             f"- 美化力度：{plan['level']}，共 {len(plan['slides'])} 页，插画 {len(heroes)} 张",
-             f"- 视觉锚点：{(meta.get('anchor') or {}).get('description', '（未设置）')}"]
+    lines = [f"# Design spec · {meta.get('title', '')}", "",
+             f"- Style: {style_line}",
+             f"- Beautify level: {plan['level']}, {len(plan['slides'])} slides, {len(heroes)} illustrations",
+             f"- Visual anchor: {(meta.get('anchor') or {}).get('description', '(not set)')}"]
     if rules:
-        lines += ["- 风格硬规则：" + "；".join(rules)]
-    lines += ["", "| 页 | 标题 | 版式 | 视觉焦点 | 插画 |", "| --- | --- | --- | --- | --- |"]
+        lines += ["- Style hard rules: " + "; ".join(rules)]
+    lines += ["", "| Slide | Title | Layout | Visual focus | Illustration |", "| --- | --- | --- | --- | --- |"]
     for p in plan["slides"]:
         s = by_n.get(p["n"], {})
         title = (s.get("title") or s.get("headline") or s.get("question") or s.get("quote") or "").replace("**", "").replace("|", "/")
@@ -122,8 +122,8 @@ def write_spec(work, deck, plan):
         lines.append(f"| {p['n']} | {title} | {p['layout']} | {p.get('focus', '')} | {h.get('prompt', '-')[:60]} |")
     warn = [(p["n"], w) for p in plan["slides"] for w in p.get("capacity_warnings", [])]
     if warn:
-        lines += ["", "容量提醒（出图前先处理）："] + [f"- 第 {n} 页：{w}" for n, w in warn]
-    lines += ["", "确认后再出图；要调整就改 plan.json 里对应页的 layout、icons 或插画 prompt。"]
+        lines += ["", "Capacity warnings (fix before generating images):"] + [f"- Slide {n}: {w}" for n, w in warn]
+    lines += ["", "Confirm before generating images; to adjust, edit the layout, icons or illustration prompt of the relevant slide in plan.json."]
     (work / "design_spec.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
@@ -258,12 +258,12 @@ def main():
     plan = {"level": a.level, "confirmed": False, "slides": slides, "assets": assets}
     save_json(plan, work / "plan.json")
     if kept:
-        print(f"保留了 {len(kept)} 页原有规划（内容没变）：{kept}；要全部重排加 --reset")
+        print(f"kept {len(kept)} existing slide plans (content unchanged): {kept}; pass --reset to re-plan everything")
     write_spec(work, deck, plan)
     for p in slides:
         print(f"  {p['n']:>2}  {p['layout']:<17} hero={p.get('hero') or '-':<8} icons={p['icons']}")
         for w in p.get("capacity_warnings", []):
-            print(f"      ! 超出容量：{w}")
+            print(f"      ! over capacity: {w}")
     n_pics = sum(len(x.get("items", [])) if x["kind"] == "sheet" else 1 for x in assets if x["kind"] in ("hero", "sheet"))
     print(f"wrote {work/'plan.json'} and design_spec.md ({n_pics} illustrations)")
 
