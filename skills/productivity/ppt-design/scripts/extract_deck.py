@@ -231,7 +231,7 @@ def main():
     eqs = flatten_math(src)
     if eqs:
         n_eq = sum(len(v) for v in eqs.values())
-        print(f"NOTE 原稿里有 {n_eq} 个公式对象，已转成普通文字公式（任何软件都能显示，也能直接改字）：")
+        print(f"NOTE the source deck has {n_eq} equation objects, converted to plain text formulas (any app can display them, and the text is directly editable):")
         for k in sorted(eqs):
             print(f"  slide{k}.xml: " + " ｜ ".join(eqs[k]))
     prs = Presentation(str(src))
@@ -302,7 +302,7 @@ def main():
             pngs = render(src, work / "source_png", dpi=80, sheet=work / "source_png" / "sheet.png")
             print(f"rendered {len(pngs)} slides -> {work/'source_png'}/sheet.png")
         except SystemExit as e:
-            print(f"NOTE 原稿预览图未生成：{e}")
+            print(f"NOTE source preview images were not generated: {e}")
 
 
 if __name__ == "__main__":
