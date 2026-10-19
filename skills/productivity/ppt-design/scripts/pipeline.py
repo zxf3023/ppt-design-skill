@@ -56,14 +56,14 @@ def main():
     if rendered and (w / "source_png").exists():
         run([HERE / "compare_sheet.py", w])
     elif (w / "source_text.json").exists():
-        print("NOTE 原稿没有渲染图（解析原稿时缺 LibreOffice），前后对比图跳过；美化版的逐页预览不受影响")
+        print("NOTE the source deck has no rendered images (LibreOffice was missing while parsing it), so the before/after comparison sheet is skipped; the per-slide previews of the beautified deck are unaffected")
     run([HERE / "review.py", w])
     if lite:
-        print("NOTE " + ("按 --lite 跳过了 LibreOffice" if a.lite else "没找到 LibreOffice") +
-              "，预览图是按排版数据直接画的近似图（render_lite），排版和溢出照样能看，"
-              "图表是简化画法；要看 PowerPoint 级效果，装 LibreOffice 后重跑")
+        print("NOTE " + ("LibreOffice skipped via --lite" if a.lite else "LibreOffice not found") +
+              ", so the previews are approximations drawn straight from the layout data (render_lite); layout and overflow are still visible,"
+              " charts are drawn simplified; for a PowerPoint-grade look, install LibreOffice and rerun")
     elif not rendered:
-        print("NOTE 没有生成预览图，视觉检查只能跳过，pptx 已正常生成")
+        print("NOTE no preview images were generated, so the visual check has to be skipped; the pptx itself was built fine")
     print("\nQA", "has ERRORS, fix before delivering" if rc else "passed (review WARN lines)")
 
 
