@@ -73,35 +73,35 @@ def check_all():
         r["items"].append({"name": name, "level": level, "ok": bool(ok), "detail": detail, "fix": fix})
 
     item("Python >= 3.8", "required", sys.version_info >= (3, 8), platform.python_version(),
-         "安装 Python 3.8 以上版本")
+         "install Python 3.8 or newer")
     for mod, pkg in PY_REQUIRED:
         item(pkg, "required", has_module(mod), "", f"pip install {pkg}")
     font = common.find_cjk_font()
-    item("中文字体（排版测量用）", "required", bool(font), font or "",
-         {"Linux": "apt-get install fonts-noto-cjk", "Darwin": "系统自带，一般无需处理",
-          "Windows": "系统自带微软雅黑，一般无需处理"}.get(OS, "安装 Noto Sans CJK"))
+    item("CJK font (for text measuring)", "required", bool(font), font or "",
+         {"Linux": "apt-get install fonts-noto-cjk", "Darwin": "bundled with the system, usually nothing to do",
+          "Windows": "微软雅黑 is bundled with the system, usually nothing to do"}.get(OS, "install Noto Sans CJK"))
     soffice = common.find_soffice()
     item("LibreOffice", "recommended", bool(soffice), soffice or "",
          {"Linux": "apt-get install libreoffice-impress", "Darwin": "brew install --cask libreoffice",
-          "Windows": "winget install TheDocumentFoundation.LibreOffice"}.get(OS, "安装 LibreOffice"))
+          "Windows": "winget install TheDocumentFoundation.LibreOffice"}.get(OS, "install LibreOffice"))
     pdftoppm = common.find_pdftoppm()
     fitz_ok = has_module("pymupdf") or has_module("fitz")
-    item("PDF 转图片（pdftoppm 或 PyMuPDF）", "recommended", bool(pdftoppm) or fitz_ok,
+    item("PDF to image (pdftoppm or PyMuPDF)", "recommended", bool(pdftoppm) or fitz_ok,
          pdftoppm or ("PyMuPDF" if fitz_ok else ""), "pip install pymupdf")
     for mod, pkg in PY_RECOMMENDED:
         if pkg == "pymupdf":
             continue
         item(pkg, "recommended", has_module(mod), "", f"pip install {pkg}")
     for mod, pkg in PY_OPTIONAL:
-        item(pkg, "optional", has_module(mod), "", f"pip install {pkg}（可选）")
+        item(pkg, "optional", has_module(mod), "", f"pip install {pkg} (optional)")
     try:
         from imagegen import find_config, ImageGen
         cfg = find_config()
         ok, why = ImageGen(cfg).available()
-        item("生图模型配置", "optional", ok, why if ok else f"未配置，将使用程序化插画（{why}）",
-             "见 references/imagegen_config.md")
+        item("Image model config", "optional", ok, why if ok else f"not configured, will use procedural illustrations ({why})",
+             "see references/imagegen_config.md")
     except Exception as e:  # noqa: BLE001
-        item("生图模型配置", "optional", False, f"未检查：{e}", "")
+        item("Image model config", "optional", False, f"not checked: {e}", "")
     r["soffice"] = soffice
     r["pdftoppm"] = pdftoppm
     r["cjk_font"] = font
@@ -116,12 +116,12 @@ def run(cmd, timeout=1800, check=False):
     try:
         p = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
     except Exception as e:  # noqa: BLE001
-        say(f"    失败：{e}")
+        say(f"    failed: {e}")
         return False, str(e)
     out = (p.stdout or "") + (p.stderr or "")
     if p.returncode != 0:
         tail = out.strip().splitlines()[-3:]
-        say("    失败：" + " | ".join(tail))
+        say("    failed: " + " | ".join(tail))
     return p.returncode == 0, out
 
 
@@ -168,7 +168,7 @@ def sys_install(want):
     if OS == "Linux":
         pre = [] if (hasattr(os, "geteuid") and os.geteuid() == 0) else ["sudo", "-n"]
         if not can_sudo():
-            say("  没有 root/sudo 权限，跳过系统组件安装，请手动执行上面的建议命令")
+            say("  no root/sudo access, skipping system component install; run the suggested commands above manually")
             return
         if shutil.which("apt-get"):
             pk = {"libreoffice": ["libreoffice-impress"], "poppler": ["poppler-utils"], "cjkfont": ["fonts-noto-cjk"]}
@@ -185,10 +185,10 @@ def sys_install(want):
             pk = {"libreoffice": ["libreoffice-fresh"], "poppler": ["poppler"], "cjkfont": ["noto-fonts-cjk"]}
             run(pre + ["pacman", "-S", "--noconfirm"] + sum((pk[w] for w in want), []))
         else:
-            say("  未识别的包管理器，请手动安装")
+            say("  unrecognized package manager, please install manually")
     elif OS == "Darwin":
         if not shutil.which("brew"):
-            say("  未找到 Homebrew。LibreOffice 可从 https://www.libreoffice.org/download/ 下载安装")
+            say("  Homebrew not found. LibreOffice can be downloaded from https://www.libreoffice.org/download/")
             return
         if "libreoffice" in want:
             run(["brew", "install", "--cask", "libreoffice"])
@@ -202,42 +202,42 @@ def sys_install(want):
             elif shutil.which("choco"):
                 run(["choco", "install", "libreoffice-fresh", "-y"])
             else:
-                say("  未找到 winget/choco。LibreOffice 可从 https://www.libreoffice.org/download/ 下载安装")
+                say("  winget/choco not found. LibreOffice can be downloaded from https://www.libreoffice.org/download/")
 
 
 def install_missing(report):
     miss = {i["name"] for i in report["items"] if not i["ok"]}
     pkgs = [pkg for mod, pkg in PY_REQUIRED + PY_RECOMMENDED if pkg in miss]
-    if "PDF 转图片（pdftoppm 或 PyMuPDF）" in miss and "pymupdf" not in pkgs:
+    if "PDF to image (pdftoppm or PyMuPDF)" in miss and "pymupdf" not in pkgs:
         pkgs.append("pymupdf")
     if pkgs:
-        say(f"\n安装 Python 包：{' '.join(pkgs)}")
+        say(f"\nInstalling Python packages: {' '.join(pkgs)}")
         pip_install(pkgs)
     want = set()
     if "LibreOffice" in miss:
         want.add("libreoffice")
-    if "中文字体（排版测量用）" in miss:
+    if "CJK font (for text measuring)" in miss:
         want.add("cjkfont")
     if want:
-        say(f"\n安装系统组件：{', '.join(sorted(want))}（可能需要几分钟）")
+        say(f"\nInstalling system components: {', '.join(sorted(want))} (may take a few minutes)")
         sys_install(want)
 
 
 # ---------------------------------------------------------------- selftest
 def selftest(report):
-    say("\n自测：用程序化插画生成一份两页的小样 ……")
+    say("\nSelf-test: build a two-page sample with procedural illustrations ...")
     tmp = Path(tempfile.mkdtemp(prefix="pb_selftest_"))
     try:
         from pptx import Presentation
         p = Presentation()
         s = p.slides.add_slide(p.slide_layouts[0])
-        s.shapes.title.text = "自测封面"
+        s.shapes.title.text = "Self-test cover"
         s.placeholders[1].text = "luobo-ppt"
         s = p.slides.add_slide(p.slide_layouts[1])
-        s.shapes.title.text = "三个要点"
+        s.shapes.title.text = "Three key points"
         tf = s.placeholders[1].text_frame
-        tf.text = "第一点"
-        for t in ("第二点", "第三点"):
+        tf.text = "First point"
+        for t in ("Second point", "Third point"):
             tf.add_paragraph().text = t
         src = tmp / "src.pptx"
         p.save(str(src))
@@ -246,11 +246,11 @@ def selftest(report):
         steps = [[py, HERE / "extract_deck.py", src, W, "--no-render"]]
         for st in steps:
             if subprocess.run([str(x) for x in st], capture_output=True).returncode:
-                raise RuntimeError("extract_deck 失败")
+                raise RuntimeError("extract_deck failed")
         deck = {"meta": {"title": "Test", "series": "", "anchor": {"description": "a glossy app icon", "glyph": "T"}},
-                "slides": [{"n": 1, "type": "cover", "title": "自测封面", "subtitle": "luobo-ppt"},
-                           {"n": 2, "type": "list", "title": "三个要点",
-                            "items": [{"text": "第一点"}, {"text": "第二点"}, {"text": "第三点"}]}]}
+                "slides": [{"n": 1, "type": "cover", "title": "Self-test cover", "subtitle": "luobo-ppt"},
+                           {"n": 2, "type": "list", "title": "Three key points",
+                            "items": [{"text": "First point"}, {"text": "Second point"}, {"text": "Third point"}]}]}
         (W / "deck.json").write_text(json.dumps(deck, ensure_ascii=False), encoding="utf-8")
         (W / "style.json").write_text(json.dumps({"name": "selftest"}), encoding="utf-8")
         for st in ([py, HERE / "plan_deck.py", W, "--level", "standard"],
@@ -259,17 +259,17 @@ def selftest(report):
                    [py, HERE / "qa_check.py", W]):
             pr = subprocess.run([str(x) for x in st], capture_output=True, text=True)
             if pr.returncode:
-                raise RuntimeError(f"{Path(str(st[1])).name} 失败：{(pr.stdout + pr.stderr).strip()[-300:]}")
+                raise RuntimeError(f"{Path(str(st[1])).name} failed: {(pr.stdout + pr.stderr).strip()[-300:]}")
         out = W / "out" / "beautified.pptx"
         Presentation(str(out))
-        say("  组装与自动检查 通过")
+        say("  assembly and automated checks passed")
         if report.get("soffice"):
             pr = subprocess.run([py, str(HERE / "render.py"), str(out), str(W / "out" / "png")],
                                 capture_output=True, text=True, timeout=300)
-            say("  渲染预览 " + ("通过" if pr.returncode == 0 else "失败：" + (pr.stdout + pr.stderr).strip()[-200:]))
+            say("  render preview " + ("passed" if pr.returncode == 0 else "failed: " + (pr.stdout + pr.stderr).strip()[-200:]))
         return True
     except Exception as e:  # noqa: BLE001
-        say(f"  自测失败：{e}")
+        say(f"  self-test failed: {e}")
         return False
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
@@ -278,8 +278,8 @@ def selftest(report):
 # ---------------------------------------------------------------- report
 def print_report(r):
     mark = {True: "OK ", False: "-- "}
-    say(f"\nluobo-ppt {r['version']} 环境检查   Python {r['python_version']}   {r['os']}")
-    for level, title in (("required", "必需"), ("recommended", "推荐"), ("optional", "可选")):
+    say(f"\nluobo-ppt {r['version']} environment check   Python {r['python_version']}   {r['os']}")
+    for level, title in (("required", "required"), ("recommended", "recommended"), ("optional", "optional")):
         say(f"\n[{title}]")
         for i in r["items"]:
             if i["level"] != level:
@@ -288,15 +288,15 @@ def print_report(r):
             if i["detail"]:
                 line += f"   {i['detail']}"
             if not i["ok"] and i["fix"] and level != "optional":
-                line += f"\n       建议：{i['fix']}"
+                line += f"\n       suggestion: {i['fix']}"
             say(line)
     say("")
     if r["full"]:
-        say("结论：全部就绪。")
+        say("Verdict: everything is ready.")
     elif r["ready"]:
-        say("结论：可以使用。缺少推荐组件时，美化版 PPT 照常生成，只是没有预览图或 AI 抠图。")
+        say("Verdict: usable. When recommended components are missing, the beautified PPT is still built, just without preview images or AI cut-outs.")
     else:
-        say("结论：缺少必需组件，请先安装（可加 --install 自动安装）。")
+        say("Verdict: required components are missing, install them first (add --install to install automatically).")
 
 
 def save_cache(r):
@@ -322,14 +322,14 @@ def main():
             import common
             c = json.loads(common.SETUP_CACHE.read_text(encoding="utf-8"))
             if c.get("ready") and c.get("version") == common.SKILL_VERSION and c.get("python") == sys.executable:
-                say(f"luobo-ppt 环境已就绪（{c.get('checked_at', '')} 检查通过）。")
+                say(f"luobo-ppt environment is ready (check passed at {c.get('checked_at', '')}).")
                 return 0
         except Exception:
             pass
 
     missing_core = [pkg for mod, pkg in PY_REQUIRED if not has_module(mod)]
     if missing_core and a.install:
-        say(f"安装必需的 Python 包：{' '.join(missing_core)}")
+        say(f"Installing required Python packages: {' '.join(missing_core)}")
         pip_install(missing_core)
     if [pkg for mod, pkg in PY_REQUIRED if not has_module(mod)] and not a.install:
         # cannot even import common helpers reliably; report minimal info
