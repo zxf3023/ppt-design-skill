@@ -58,11 +58,11 @@
   },
   "emphasis_color": "primary",
   "name": "lavender-soft",
-  "label": "雾紫柔和",
+  "label": "Lavender Soft",
   "rules": [
-    "留白要多，一页一句话最好",
-    "不用标题下的小横条，靠字号区分层级",
-    "所有形状尽量圆润，避免尖角和粗线"
+    "Generous whitespace — one sentence per page is ideal",
+    "No rules under headings; establish hierarchy with type size alone",
+    "Keep every shape rounded; avoid sharp corners and heavy strokes"
   ],
   "forbid": {}
 }
