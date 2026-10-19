@@ -3,8 +3,8 @@
 
 Usage:
   python analyze_source.py WORK_DIR --file article.md [--file notes.docx ...]
-  python analyze_source.py WORK_DIR --topic "Agent Skills 是什么，普通人怎么用"
-  options: --scenario oral|talk|reading|report   (default oral: 口播视频)
+  python analyze_source.py WORK_DIR --topic "What are Agent Skills and how do ordinary people use them"
+  options: --scenario oral|talk|reading|report   (default oral: oral video)
            --minutes 3                            target speaking time, overrides length-based estimate
 
 Writes WORK_DIR/analysis.json and WORK_DIR/analysis.md, and copies the source text to
@@ -25,10 +25,10 @@ from common import save_json, load_json, SKILL_DIR, style_file  # noqa: E402
 
 # on-screen pace per scenario: how much source text one slide usually carries
 SCENARIOS = {
-    "oral":    {"label": "口播视频", "chars_per_slide": 150, "sec_per_slide": 25, "density": "low"},
-    "talk":    {"label": "现场演讲", "chars_per_slide": 180, "sec_per_slide": 60, "density": "low"},
-    "reading": {"label": "发出去阅读", "chars_per_slide": 260, "sec_per_slide": 0, "density": "high"},
-    "report":  {"label": "工作汇报", "chars_per_slide": 220, "sec_per_slide": 90, "density": "high"},
+    "oral":    {"label": "Oral video", "chars_per_slide": 150, "sec_per_slide": 25, "density": "low"},
+    "talk":    {"label": "Live talk", "chars_per_slide": 180, "sec_per_slide": 60, "density": "low"},
+    "reading": {"label": "Reading", "chars_per_slide": 260, "sec_per_slide": 0, "density": "high"},
+    "report":  {"label": "Report", "chars_per_slide": 220, "sec_per_slide": 90, "density": "high"},
 }
 
 
@@ -54,7 +54,7 @@ def read_any(path):
                     out.append(t)
             return "\n\n".join(out)
         except ImportError:
-            raise SystemExit("读取 .docx 需要 python-docx：pip install python-docx")
+            raise SystemExit("reading .docx requires python-docx: pip install python-docx")
     if ext == ".pdf":
         try:
             try:
@@ -63,17 +63,17 @@ def read_any(path):
                 import fitz
             return "\n\n".join(page.get_text() for page in fitz.open(str(p)))
         except ImportError:
-            raise SystemExit("读取 .pdf 需要 PyMuPDF：pip install pymupdf")
+            raise SystemExit("reading .pdf requires PyMuPDF: pip install pymupdf")
     if ext == ".pptx":
         from pptx import Presentation
         out = []
         for i, s in enumerate(Presentation(str(p)).slides, 1):
-            out.append(f"## 第 {i} 页")
+            out.append(f"## Page {i}")
             for sh in s.shapes:
                 if sh.has_text_frame and sh.text_frame.text.strip():
                     out.append(sh.text_frame.text.strip())
             if s.has_notes_slide and s.notes_slide.notes_text_frame.text.strip():
-                out.append("备注：" + s.notes_slide.notes_text_frame.text.strip())
+                out.append("Notes: " + s.notes_slide.notes_text_frame.text.strip())
         return "\n\n".join(out)
     return p.read_text(encoding="utf-8", errors="ignore")
 
@@ -148,20 +148,20 @@ def main():
            "style_signals": style_signals(text), **m}
     save_json(res, work / "analysis.json")
 
-    lines = [f"# 素材分析", "",
-             f"- 场景：{sc['label']}（默认密度 {sc['density']}）",
-             "- 素材：" + ("只有题目，需要自己组织内容，涉及事实和数据要先查证" if topic_only
-                         else "{} 个汉字，{} 个英文词，{} 段".format(m["cjk_chars"], m["latin_words"], m["paragraphs"])),
-             f"- 建议页数：{lo} 到 {hi} 页，推荐 {mid} 页（含封面和结尾）",
-             f"- 语言：{m['language']}"]
+    lines = [f"# Source analysis", "",
+             f"- Scenario: {sc['label']} (default density {sc['density']})",
+             "- Source: " + ("topic only, build the content yourself; verify any facts and figures first" if topic_only
+                         else "{} CJK characters, {} English words, {} paragraphs".format(m["cjk_chars"], m["latin_words"], m["paragraphs"])),
+             f"- Suggested pages: {lo} to {hi}, recommended {mid} (including cover and closing)",
+             f"- Language: {m['language']}"]
     if a.minutes:
-        lines.append(f"- 目标时长：{a.minutes:g} 分钟")
+        lines.append(f"- Target duration: {a.minutes:g} minutes")
     if m["headings"]:
-        lines += ["", "## 原文标题结构", ""] + [f"{'  ' * (lv - 1)}- {t}" for lv, t in m["headings"]]
+        lines += ["", "## Source heading structure", ""] + [f"{'  ' * (lv - 1)}- {t}" for lv, t in m["headings"]]
     if m["data_points"]:
-        lines += ["", "## 可做成数据页的数字", ""] + [f"- {d}" for d in m["data_points"][:15]]
+        lines += ["", "## Numbers that could become data slides", ""] + [f"- {d}" for d in m["data_points"][:15]]
     if res["style_signals"]:
-        lines += ["", "## 风格线索", ""] + [f"- {s['style']}：命中 {'、'.join(s['hits'])}" for s in res["style_signals"][:4]]
+        lines += ["", "## Style signals", ""] + [f"- {s['style']}: matched {', '.join(s['hits'])}" for s in res["style_signals"][:4]]
     (work / "analysis.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n".join(lines))
     print(f"\nwrote {work/'analysis.json'}, {work/'analysis.md'}, {work/'source.md'}")
