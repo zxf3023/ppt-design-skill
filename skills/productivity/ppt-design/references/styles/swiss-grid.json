@@ -68,11 +68,11 @@
     "radius_over": 0.0
   },
   "rules": [
-    "全程直角，不用阴影和渐变",
-    "整页只有黑、白、灰和一个信号橙",
-    "编号、数字用粗体，靠字号反差建立层级"
+    "Square corners throughout; no shadows, no gradients",
+    "Black, white, grey and one signal orange — nothing else on the page",
+    "Numbers and labels in bold; hierarchy comes from type-size contrast"
   ],
   "emphasis_color": "primary",
   "name": "swiss-grid",
-  "label": "硬边网格"
+  "label": "Swiss Grid"
 }
