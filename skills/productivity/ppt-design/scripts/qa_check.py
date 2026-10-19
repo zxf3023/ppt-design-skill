@@ -237,9 +237,9 @@ def main():
             bottom = e["y"] + e.get("h", e.get("size", 0))
             if bottom > rail + 0.03:
                 if e["t"] == "text":
-                    add("ERROR", sd["n"], "rail", f"{e['text'][:24]!r} 底部 {bottom:.2f}in 越过底线 {rail:.2f}in")
+                    add("ERROR", sd["n"], "rail", f"{e['text'][:24]!r} bottom {bottom:.2f}in crosses the rail {rail:.2f}in")
                 elif e["t"] != "image":
-                    add("WARN", sd["n"], "rail", f"{e['t']} 底部 {bottom:.2f}in 越过底线 {rail:.2f}in")
+                    add("WARN", sd["n"], "rail", f"{e['t']} bottom {bottom:.2f}in crosses the rail {rail:.2f}in")
 
     # ---------------- accent discipline: few, small accent moments per slide
     acc_cap = style.data.get("accent_max", {"uses": 3, "area": 0.08})
@@ -257,25 +257,25 @@ def main():
                     area += e["w"] * e["h"] * e.get("alpha", 1.0)
         share = area / (CANVAS_W * CANVAS_H)
         if uses > acc_cap["uses"] or share > acc_cap["area"]:
-            add("WARN", sd["n"], "accent", f"强调色出现 {uses} 处、面积 {share:.0%}，上限 {acc_cap['uses']} 处、{acc_cap['area']:.0%}")
+            add("WARN", sd["n"], "accent", f"accent appears {uses} times, area {share:.0%}; cap {acc_cap['uses']} times, {acc_cap['area']:.0%}")
 
     # ---------------- style no-go list (style.json "forbid")
     fb = style.data.get("forbid", {})
     P = style.palette
     if fb.get("pure_white") and ("FFFFFF" in (P["bg_top"].upper(), P["bg_bottom"].upper())):
-        add("WARN", 0, "forbid", "这套风格不用纯白底，bg_top / bg_bottom 换成带一点暖或冷调的浅色")
+        add("WARN", 0, "forbid", "this style avoids a pure white background; set bg_top / bg_bottom to a light tint with a little warmth or coolness")
     if fb.get("pure_black") and "000000" in (P["text"].upper(), P["bg_bottom"].upper(), P["primary_dark"].upper()):
-        add("WARN", 0, "forbid", "这套风格不用纯黑，换成带色相的近黑")
+        add("WARN", 0, "forbid", "this style avoids pure black; use a tinted near-black instead")
     for sd in dump["slides"]:
         for e in sd["elements"]:
             if e.get("role") in ("background", "decor"):
                 continue
             if fb.get("shadow") and e.get("shadow") and style.depth not in ("flat", "ring"):
-                add("WARN", sd["n"], "forbid", f"{e['t']} 带阴影，这套风格不用阴影")
+                add("WARN", sd["n"], "forbid", f"{e['t']} has a shadow, but this style avoids shadows")
                 break
             ro = fb.get("radius_over")
             if ro is not None and e["t"] == "rect" and (e.get("radius") or 0) > ro + 0.001 and e["h"] > 0.2:
-                add("WARN", sd["n"], "forbid", f"圆角 {e['radius']:.2f} 超过这套风格的上限 {ro}")
+                add("WARN", sd["n"], "forbid", f"corner radius {e['radius']:.2f} exceeds this style's cap of {ro}")
                 break
 
     # content checks (both modes): body text size and deck-level structure
@@ -284,10 +284,10 @@ def main():
     for sd in dump["slides"]:
         for e in sd["elements"]:
             if e["t"] == "text" and e["size"] < floor and len(e["text"]) > 12 and (proj or e.get("color") not in ("muted", "subtle")):
-                add("WARN", sd["n"], "small-text", f"{e['text'][:24]!r} 只有 {e['size']}pt，"
-                    + ("投影模式下文字不小于 14pt" if proj else "正文建议不小于 12pt"))
+                add("WARN", sd["n"], "small-text", f"{e['text'][:24]!r} is only {e['size']}pt, "
+                    + ("text should be at least 14pt in projection mode" if proj else "body text should be at least 12pt"))
     if len(deck["slides"]) > 15 and not any(sl.get("type") == "section" for sl in deck["slides"]):
-        add("WARN", 0, "structure", "超过 15 页，没有章节分隔页")
+        add("WARN", 0, "structure", "more than 15 slides with no section divider")
     ghost = [f"{sl['n']}. {(sl.get('title') or sl.get('headline') or sl.get('question') or sl.get('quote') or '').replace('**', '')}" for sl in deck["slides"]]
 
     order = {"ERROR": 0, "WARN": 1, "INFO": 2}
