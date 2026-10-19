@@ -57,7 +57,7 @@ def _script(s, table, mark):
     if all(ch in table for ch in s):
         return "".join(table[ch] for ch in s)
     if len(s) == 1 or re.fullmatch(r"[一-鿿]+", s):
-        return s  # k切: CJK labels stay on the line
+        return s  # CJK labels stay on the line
     return f"{mark}({s})"
 
 
