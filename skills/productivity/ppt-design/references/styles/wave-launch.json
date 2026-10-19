@@ -61,13 +61,13 @@
     ]
   },
   "rules": [
-    "波纹线只放在封面、结尾和内容页右上角",
-    "青色用于数字和关键词，不做大色块",
-    "图表只用青色一个色系，靠深浅区分"
+    "Wave lines only on the cover, the closing page and the top-right of content pages",
+    "Cyan for numerals and keywords, never a large block",
+    "Charts stay within the cyan family, separated by lightness"
   ],
   "emphasis_color": "accent",
   "name": "wave-launch",
-  "label": "蓝线发布",
+  "label": "Wave Launch",
   "forbid": {
     "pure_black": true
   }
