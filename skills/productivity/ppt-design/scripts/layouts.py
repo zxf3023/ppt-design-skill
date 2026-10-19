@@ -104,7 +104,7 @@ def title_block(ctx, s, w=CW, x=MX, y=TITLE_Y):
     els = []
     title = s.get("title", "")
     if s.get("kicker"):
-        # small chapter tag above the title, e.g. "01 · 概览" (keep the source deck's little labels here)
+        # small chapter tag above the title, e.g. "01 · Overview" (keep the source deck's little labels here)
         kw = min(w, text_width_pt(s["kicker"], 12, True) / 72 + len(s["kicker"]) * 0.03 + 0.2)
         k = T(s["kicker"], x, y - 0.3, kw, 0.28, 12, "label", True, "body", valign="m", spc=1.5)
         k["grp"] = "kicker"
@@ -1063,7 +1063,7 @@ def toc(s, ctx):
     items = _toc_items(s, ctx)
     n = max(1, len(items))
     els = []
-    head = s.get("title") or "目录"
+    head = s.get("title") or "Contents"
     kick = s.get("kicker") or "CONTENTS"
     lw = 4.1
     hs = fit_size(head, lw, 1.2, 60, 36, bold=True, max_lines=1)
@@ -1106,7 +1106,7 @@ def toc_row(s, ctx):
     items = _toc_items(s, ctx)
     n = max(1, len(items))
     els = []
-    head = s.get("title") or "目录"
+    head = s.get("title") or "Contents"
     kick = s.get("kicker") or "CONTENTS"
     hs = fit_size(head, CW * 0.6, 0.9, 44, 30, bold=True, max_lines=1)
     els.append(T(head, MX, 1.05, CW * 0.6, 0.9, hs, "strong", True, "heading", valign="b", ls=1.0))
@@ -1414,12 +1414,13 @@ def chart_layout(s, ctx):
 
 
 FRAME_LABELS = {
-    "swot": {"s": "优势", "w": "劣势", "o": "机会", "t": "威胁"},
-    "pest": {"p": "政治", "e": "经济", "s": "社会", "t": "技术"},
-    "five_forces": {"center": "行业内竞争", "entrant": "新进入者威胁", "substitute": "替代品威胁",
-                    "supplier": "供应商议价能力", "buyer": "购买者议价能力"},
-    "canvas": {"kp": "重要伙伴", "ka": "关键业务", "kr": "核心资源", "vp": "价值主张", "cr": "客户关系",
-               "ch": "渠道通路", "cs": "客户细分", "cost": "成本结构", "revenue": "收入来源"},
+    "swot": {"s": "Strengths", "w": "Weaknesses", "o": "Opportunities", "t": "Threats"},
+    "pest": {"p": "Political", "e": "Economic", "s": "Social", "t": "Technological"},
+    "five_forces": {"center": "Industry rivalry", "entrant": "New entrants", "substitute": "Substitutes",
+                    "supplier": "Supplier power", "buyer": "Buyer power"},
+    "canvas": {"kp": "Key partners", "ka": "Key activities", "kr": "Key resources", "vp": "Value proposition",
+               "cr": "Customer relations", "ch": "Channels", "cs": "Customer segments",
+               "cost": "Cost structure", "revenue": "Revenue streams"},
 }
 
 
@@ -1601,7 +1602,7 @@ def shot_frame(ctx, path, x, y, w, h, frame=None, align="l"):
         els.append(im)
     else:
         els.append(R(ix, iy, iw, ih, fill="tint"))
-        els.append(T("截图", ix, iy, iw, ih, 16, "muted", align="c", valign="m"))
+        els.append(T("Screenshot", ix, iy, iw, ih, 16, "muted", align="c", valign="m"))
     return els, (ix, iy, iw, ih)
 
 
