@@ -58,11 +58,11 @@
   },
   "emphasis_color": "primary",
   "name": "warm-orange",
-  "label": "暖橙活力",
+  "label": "Warm Orange",
   "rules": [
-    "橙色做主色、青绿色只做点缀，比例大约八比二",
-    "卡片圆角可以大一些，显得亲切",
-    "一页只放一个视觉焦点，别让橙色到处都是"
+    "Orange is the base colour and teal only an accent, roughly 8:2",
+    "Cards can take larger radii — it reads friendlier",
+    "One visual focus per page; do not spread the orange everywhere"
   ],
   "forbid": {}
 }
