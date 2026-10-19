@@ -10,9 +10,9 @@ score slots, and the rubric from references/critique.md in short form. Claude th
 looks at out/sheet.png and the page PNGs, fills in the scores and the Keep / Fix /
 Quick-win lists, fixes what is cheap, and reports the verdict when delivering.
 
-Dimensions: 统一 (one direction throughout), 层级 (what to read first),
-细节 (alignment, spacing, small defects), 传达 (does each page land its point),
-节奏 (variety and pacing across the deck).
+Dimensions: unity (one direction throughout), hierarchy (what to read first),
+detail (alignment, spacing, small defects), message (does each page land its point),
+rhythm (variety and pacing across the deck).
 """
 import argparse
 import statistics as st
@@ -50,7 +50,7 @@ def main():
     slides = dump["slides"]
     n = len(slides)
 
-    # ---- 统一
+    # ---- unity
     sizes = Counter()
     fonts = Counter()
     raw_colors = Counter()
@@ -72,13 +72,13 @@ def main():
                     and e["radius"] < min(e["w"], e["h"]) / 2 - 0.01):
                 radii[round(e["radius"], 2)] += 1
     unity = [
-        ("全篇字号种数（不含页眉页脚）", len(sizes), "8 种以内好，超过 10 种就散"),
-        ("用到的字体角色", ", ".join(f"{k}×{v}" for k, v in fonts.most_common()), "display 只该出现在封面、大数字、章节号"),
-        ("色板之外的颜色", len(raw_colors), "应为 0"),
-        ("卡片圆角种数", len(radii), "1 到 2 种"),
+        ("Distinct font sizes in the deck (excluding header and footer)", len(sizes), "Under 8 is good; past 10 it falls apart"),
+        ("Font roles in use", ", ".join(f"{k}×{v}" for k, v in fonts.most_common()), "display should only appear on covers, big numbers and section numbers"),
+        ("Colors outside the palette", len(raw_colors), "should be 0"),
+        ("Distinct card corner radii", len(radii), "1 to 2"),
     ]
 
-    # ---- 层级
+    # ---- hierarchy
     hier_rows, weak = [], []
     for sd in slides:
         ts = content_texts(sd)
@@ -92,25 +92,25 @@ def main():
         if ratio < 1.5 or per > 5:
             weak.append(sd["n"])
     hierarchy = [
-        ("最大字号与中位字号之比 < 1.5 或单页超过 5 种字号的页", weak or "无", "主角不突出，或者字号太碎"),
+        ("Pages where max/median font size < 1.5 or more than 5 sizes on one page", weak or "none", "The focal point is weak, or the sizes are too fragmented"),
     ]
 
-    # ---- 细节
+    # ---- detail
     miss = []
     for sd in slides:
         ts = content_texts(sd)
         lefts = [t["x"] for t in ts if t.get("align", "l") == "l"]
         m = near_misses(lefts)
         if m:
-            miss.append(f"{sd['n']}：{', '.join(f'{x:.2f}/{y:.2f}' for x, y in m[:3])}")
+            miss.append(f"{sd['n']}: {', '.join(f'{x:.2f}/{y:.2f}' for x, y in m[:3])}")
     warn_by = Counter(i["check"] for i in qa.get("issues", []) if i["level"] == "WARN")
     detail = [
-        ("左边缘差一点没对齐（英寸）", "；".join(miss) if miss else "无", "0.03 到 0.18 英寸的错位多半是失误"),
-        ("QA 警告分布", ", ".join(f"{k}×{v}" for k, v in warn_by.most_common()) or "无", "contrast、rail、accent 优先处理"),
-        ("QA 错误", qa.get("counts", {}).get("ERROR", 0), "必须为 0"),
+        ("Left edges that almost line up (inches)", "; ".join(miss) if miss else "none", "Misalignments of 0.03 to 0.18 inches are usually mistakes"),
+        ("QA warning breakdown", ", ".join(f"{k}×{v}" for k, v in warn_by.most_common()) or "none", "handle contrast, rail, accent first"),
+        ("QA errors", qa.get("counts", {}).get("ERROR", 0), "must be 0"),
     ]
 
-    # ---- 传达
+    # ---- message
     dens, no_notes = [], []
     for s in deck["slides"]:
         from outline_check import screen_text
@@ -120,47 +120,48 @@ def main():
             no_notes.append(s["n"])
     heavy = [f"{k}({c})" for k, c in dens if c > 160]
     convey = [
-        ("屏幕字数超过 160 的页", ", ".join(heavy) or "无", "字多的页要么拆，要么换成更有结构的版式"),
-        ("没有口播备注的内容页", no_notes or "无", "口播稿要求每页都有"),
-        ("标题平均字数", round(st.mean(clen(s.get("title") or s.get("headline") or s.get("question") or s.get("quote") or "") for s in deck["slides"]), 1),
-         "结论式标题通常 10 到 20 字"),
+        ("Pages with more than 160 on-screen characters", ", ".join(heavy) or "none", "A text-heavy page should be split or moved to a more structured layout"),
+        ("Content pages with no speaker notes", no_notes or "none", "The script requires notes on every page"),
+        ("Average title length", round(st.mean(clen(s.get("title") or s.get("headline") or s.get("question") or s.get("quote") or "") for s in deck["slides"]), 1),
+         "A takeaway title is usually 10 to 20 characters"),
     ]
 
-    # ---- 节奏
+    # ---- rhythm
     layouts = [sd["layout"] for sd in slides]
     runs = [layouts[i] for i in range(2, n) if layouts[i] == layouts[i - 1] == layouts[i - 2]]
     counts = [c for _, c in dens]
     heroes = sum(1 for sd in slides for e in sd["elements"] if e["t"] == "image" and e.get("role") not in ("background", "decor"))
     rhythm = [
-        ("用到的版式种数 / 页数", f"{len(set(layouts))} / {n}", "至少一半"),
-        ("连续三页同版式", runs or "无", "应为无"),
-        ("字数起伏（标准差 / 平均）", round(st.pstdev(counts) / max(1, st.mean(counts)), 2) if counts else 0,
-         "0.3 到 0.7 有呼吸感；太低像流水账，太高忽密忽疏"),
-        ("插画数量", heroes, "封面、章节、结论页有图就够，不必页页有"),
+        ("Distinct layouts / pages", f"{len(set(layouts))} / {n}", "at least half"),
+        ("Three pages in a row with the same layout", runs or "none", "should be none"),
+        ("Text length variation (stdev / mean)", round(st.pstdev(counts) / max(1, st.mean(counts)), 2) if counts else 0,
+         "0.3 to 0.7 breathes well; lower reads like a ledger, higher swings between dense and sparse"),
+        ("Illustration count", heroes, "Cover, section and closing pages are enough; not every page needs one"),
     ]
 
     def table(rows):
-        lines = ["| 检查项 | 结果 | 参考 |", "|---|---|---|"]
+        lines = ["| Check | Result | Reference |", "|---|---|---|"]
         lines += [f"| {a} | {b} | {c} |" for a, b, c in rows]
         return "\n".join(lines)
 
-    md = [f"# 设计自评：{deck.get('meta', {}).get('title', work.name)}", "",
-          "先看 out/sheet.png 和逐页 PNG，再结合下面的数字打分。每项 0 到 10 分，"
-          "0 到 4 不及格，5 到 6 能用，7 到 8 扎实，9 到 10 出彩。分数别平均掉，哪项差就直说哪项差。", "",
-          "## 1 统一：整套是不是一个方向到底", "", table(unity), "", "分数：", "",
-          "## 2 层级：陌生人能不能一眼看出先读什么", "", table(hierarchy), "",
-          "| 页 | 最大字号 | 中位字号 | 比值 | 字号种数 |", "|---|---|---|---|---|",
-          *[f"| {r[0]} | {r[1]} | {r[2]} | {r[3]} | {r[4]} |" for r in hier_rows], "", "分数：", "",
-          "## 3 细节：对齐、间距、小瑕疵", "", table(detail), "", "分数：", "",
-          "## 4 传达：每页的观点有没有落地", "", table(convey), "", "分数：", "",
-          "## 5 节奏：翻页时有没有起伏", "", table(rhythm), "", "分数：", "",
-          "## 结论", "", "一句话判断：", "",
-          "保留（做对了、别动）：", "", "要修（影响观感的问题，交付前修掉）：", "",
-          "顺手改（几分钟就能改好、效果明显）：", ""]
+    md = [f"# Design self-review: {deck.get('meta', {}).get('title', work.name)}", "",
+          "Look at out/sheet.png and the page PNGs first, then score against the numbers below. "
+          "Each item is 0 to 10: 0 to 4 fails, 5 to 6 is usable, 7 to 8 is solid, 9 to 10 is excellent. "
+          "Don't average the scores away; if something is weak, say so.", "",
+          "## 1 Unity: is the whole deck one direction throughout", "", table(unity), "", "Score:", "",
+          "## 2 Hierarchy: can a stranger see at a glance what to read first", "", table(hierarchy), "",
+          "| Page | Max size | Median size | Ratio | Size count |", "|---|---|---|---|---|",
+          *[f"| {r[0]} | {r[1]} | {r[2]} | {r[3]} | {r[4]} |" for r in hier_rows], "", "Score:", "",
+          "## 3 Detail: alignment, spacing, small defects", "", table(detail), "", "Score:", "",
+          "## 4 Message: does each page land its point", "", table(convey), "", "Score:", "",
+          "## 5 Rhythm: does the deck rise and fall as you flip through", "", table(rhythm), "", "Score:", "",
+          "## Verdict", "", "One-line judgement:", "",
+          "Keep (done right, don't touch):", "", "Fix (issues that hurt the look, fix before delivery):", "",
+          "Quick wins (a few minutes each, clearly visible):", ""]
     (out / "review.md").write_text("\n".join(md), encoding="utf-8")
     print(f"wrote {out / 'review.md'}")
-    print(f"  字号 {len(sizes)} 种，版式 {len(set(layouts))}/{n}，层级偏弱的页 {weak or '无'}，"
-          f"对齐疑点 {len(miss)} 页，QA 错误 {qa.get('counts', {}).get('ERROR', 0)}")
+    print(f"  {len(sizes)} font sizes, {len(set(layouts))}/{n} layouts, weak hierarchy on {weak or 'none'}, "
+          f"alignment suspects on {len(miss)} pages, QA errors {qa.get('counts', {}).get('ERROR', 0)}")
 
 
 if __name__ == "__main__":
