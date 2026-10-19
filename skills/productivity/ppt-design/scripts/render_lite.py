@@ -489,7 +489,7 @@ def main():
     from render import contact_sheet
     contact_sheet(files, work / "out" / "sheet.png", a.cols)
     print("sheet:", work / "out" / "sheet.png")
-    print("NOTE 这是不经过 LibreOffice 的近似预览：排版、颜色、溢出都看得出来，图表是简化画法，字体细节以 PowerPoint 为准")
+    print("NOTE this is an approximate preview that skips LibreOffice: layout, colours and overflow are all visible, charts are drawn simplified, and font details follow PowerPoint")
 
 
 if __name__ == "__main__":
