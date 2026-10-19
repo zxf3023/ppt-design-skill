@@ -59,11 +59,11 @@
   },
   "emphasis_color": "accent",
   "name": "dark-tech",
-  "label": "深色科技",
+  "label": "Dark Tech",
   "rules": [
-    "背景始终深色，文字用近白色",
-    "青色只用于强调和发光，不做大面积底色",
-    "插画要有发光感，但画面四周保持暗"
+    "Background always dark, text near-white",
+    "Cyan is for accents and glow only, never a large background fill",
+    "Illustrations should glow, but keep the edges of the frame dark"
   ],
   "forbid": {}
 }
