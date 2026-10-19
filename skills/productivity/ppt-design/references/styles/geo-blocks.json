@@ -64,13 +64,13 @@
     ]
   },
   "rules": [
-    "四个几何色只出现在装饰和图表里，正文区保持米白",
-    "卡片直角或极小圆角，不加阴影",
-    "图表按红黄绿蓝顺序取色"
+    "The four geometric colours appear only in decoration and charts; the content area stays off-white",
+    "Cards are square or nearly so, with no shadow",
+    "Charts take colours in the order red, yellow, green, blue"
   ],
   "emphasis_color": "accent",
   "name": "geo-blocks",
-  "label": "几何色块",
+  "label": "Geo Blocks",
   "forbid": {
     "shadow": true,
     "radius_over": 0.05
