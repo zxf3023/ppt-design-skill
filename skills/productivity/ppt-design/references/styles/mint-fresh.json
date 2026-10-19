@@ -61,11 +61,11 @@
   },
   "emphasis_color": "primary",
   "name": "mint-fresh",
-  "label": "薄荷清新",
+  "label": "Mint Fresh",
   "rules": [
-    "一页最多一处黄色笔刷高亮",
-    "卡片一律大圆角白底，不用直角",
-    "插画只用绿色系加少量黄色，不出现第三种鲜艳色"
+    "At most one yellow brush highlight per page",
+    "Cards are white with large radii — never square",
+    "Illustrations stay in the greens plus a little yellow; no third saturated colour"
   ],
   "forbid": {}
 }
