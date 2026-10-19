@@ -88,81 +88,81 @@ def check(slide, layout):
     for f, mx in cap.get("fields", {}).items():
         v = _get(slide, f)
         if isinstance(v, str) and clen(v) > _m(mx):
-            out.append(f"{f} 约 {clen(v)} 字，{layout} 最多 {_m(mx)}")
+            out.append(f"{f} is ~{clen(v)} units, {layout} holds at most {_m(mx)}")
     if "items" in cap:
         lo, hi = cap["items"]
         items = slide.get("items", [])
         if not (lo <= len(items) <= hi):
-            out.append(f"{len(items)} 条 items，{layout} 需要 {lo} 到 {hi} 条")
+            out.append(f"{len(items)} items, {layout} needs {lo} to {hi}")
         for i, it in enumerate(items, 1):
             if not isinstance(it, dict):
                 continue
             for f, mx in cap.get("item", {}).items():
                 v = it.get(f)
                 if v is not None and clen(str(v)) > _m(mx):
-                    out.append(f"第 {i} 条的 {f} 约 {clen(str(v))} 字，最多 {_m(mx)}")
+                    out.append(f"item {i} field {f} is ~{clen(str(v))} units, max {_m(mx)}")
     for f, (lo, hi, mx) in cap.get("lists", {}).items():
         v = _get(slide, f)
         if v is None:
             continue
         v = v if isinstance(v, list) else [v]
         if not (lo <= len(v) <= hi):
-            out.append(f"{f} 有 {len(v)} 条，需要 {lo} 到 {hi} 条")
+            out.append(f"{f} has {len(v)} entries, needs {lo} to {hi}")
         for i, x in enumerate(v, 1):
             if clen(_txt(x)) > _m(mx):
-                out.append(f"{f} 第 {i} 条约 {clen(_txt(x))} 字，最多 {_m(mx)}")
+                out.append(f"{f} entry {i} is ~{clen(_txt(x))} units, max {_m(mx)}")
     if "quadrants" in cap:
         lo, hi, tmx, imax, iw = cap["quadrants"]
         q = slide.get("quadrants", [])
         if len(q) != 4:
-            out.append(f"quadrants 需要正好 4 个，现在 {len(q)} 个")
+            out.append(f"quadrants needs exactly 4, got {len(q)}")
         for i, qq in enumerate(q, 1):
             if clen(qq.get("title", "")) > _m(tmx):
-                out.append(f"第 {i} 象限标题最多 {_m(tmx)} 字")
+                out.append(f"quadrant {i} title max {_m(tmx)} units")
             its = qq.get("items", [])
             if len(its) > imax:
-                out.append(f"第 {i} 象限 {len(its)} 条，最多 {imax} 条")
+                out.append(f"quadrant {i} has {len(its)} items, max {imax}")
             for x in its:
                 if clen(_txt(x)) > _m(iw):
-                    out.append(f"第 {i} 象限有一条约 {clen(_txt(x))} 字，最多 {_m(iw)}")
+                    out.append(f"quadrant {i} has an entry of ~{clen(_txt(x))} units, max {_m(iw)}")
     if "table" in cap:
         t = cap["table"]
         cols, rows = slide.get("columns", []), slide.get("rows", [])
         if not (t["columns"][0] <= len(cols) <= t["columns"][1]):
-            out.append(f"表格 {len(cols)} 列，需要 {t['columns'][0]} 到 {t['columns'][1]} 列")
+            out.append(f"table has {len(cols)} columns, needs {t['columns'][0]} to {t['columns'][1]}")
         if not (t["rows"][0] <= len(rows) <= t["rows"][1]):
-            out.append(f"表格 {len(rows)} 行，需要 {t['rows'][0]} 到 {t['rows'][1]} 行，多了就拆页")
+            out.append(f"table has {len(rows)} rows, needs {t['rows'][0]} to {t['rows'][1]}, split the slide if more")
         long_cells = [c for r in rows for c in r if clen(str(c)) > _m(t["cell"])]
         if long_cells:
-            out.append(f"{len(long_cells)} 个单元格超过 {_m(t['cell'])} 字")
+            out.append(f"{len(long_cells)} cells exceed {_m(t['cell'])} units")
     if "chart" in cap:
         c = cap["chart"]
         spec = slide.get("chart") or {}
         cats, ser = spec.get("categories", []), spec.get("series", [])
         if not (c["categories"][0] <= len(cats) <= c["categories"][1]):
-            out.append(f"图表 {len(cats)} 个分类，需要 {c['categories'][0]} 到 {c['categories'][1]} 个")
+            out.append(f"chart has {len(cats)} categories, needs {c['categories'][0]} to {c['categories'][1]}")
         if not (c["series"][0] <= len(ser) <= c["series"][1]):
-            out.append(f"图表 {len(ser)} 组数据，需要 {c['series'][0]} 到 {c['series'][1]} 组")
+            out.append(f"chart has {len(ser)} series, needs {c['series'][0]} to {c['series'][1]}")
         for sr in ser:
             if len(sr.get("values", [])) != len(cats):
-                out.append(f"数据组 {sr.get('name', '')} 的数值个数和分类个数不一致")
+                out.append(f"series {sr.get('name', '')} has a different number of values than categories")
         if spec.get("type") in ("pie", "doughnut") and len(ser) > 1:
-            out.append("饼图和环形图只能有一组数据")
+            out.append("pie and doughnut charts can only have one series")
     if "framework" in cap:
         fw = slide.get("framework") or {}
         kind = fw.get("kind")
         lim = cap["framework"].get(kind)
         if not lim:
-            out.append(f"framework.kind 只能是 {', '.join(cap['framework'])}")
+            out.append(f"framework.kind must be one of {', '.join(cap['framework'])}")
         else:
             lo, hi, mx = lim
             for k, v in (fw.get("blocks") or {}).items():
                 v = v if isinstance(v, list) else [v]
                 if len(v) > hi:
-                    out.append(f"{kind} 的 {k} 有 {len(v)} 条，最多 {hi} 条")
+                    out.append(f"{kind} {k} has {len(v)} entries, max {hi}")
                 for x in v:
                     if clen(_txt(x)) > _m(mx):
-                        out.append(f"{kind} 的 {k} 有一条约 {clen(_txt(x))} 字，最多 {_m(mx)}")
+                        out.append(f"{kind} {k} has an entry of ~{clen(_txt(x))} units, max {_m(mx)}")
     return out
 
 
@@ -171,20 +171,20 @@ def summary(layout):
     parts = []
     if "items" in cap:
         lo, hi = cap["items"]
-        its = "，".join(f"{k}≤{v}" for k, v in cap.get("item", {}).items())
-        parts.append(f"items {lo}-{hi} 条（{its}）")
+        its = ", ".join(f"{k}≤{v}" for k, v in cap.get("item", {}).items())
+        parts.append(f"items {lo}-{hi} ({its})")
     for f, (lo, hi, mx) in cap.get("lists", {}).items():
-        parts.append(f"{f} {lo}-{hi} 条（每条≤{mx}）")
+        parts.append(f"{f} {lo}-{hi} entries (each ≤{mx})")
     if "quadrants" in cap:
-        parts.append("4 个象限（标题≤8，每格≤3 条、每条≤14）")
+        parts.append("4 quadrants (title ≤8, each cell ≤3 entries, ≤14 units each)")
     if "table" in cap:
         t = cap["table"]
-        parts.append(f"{t['columns'][0]}-{t['columns'][1]} 列，{t['rows'][0]}-{t['rows'][1]} 行，单元格≤{t['cell']}")
+        parts.append(f"{t['columns'][0]}-{t['columns'][1]} columns, {t['rows'][0]}-{t['rows'][1]} rows, cells ≤{t['cell']}")
     if "chart" in cap:
-        parts.append("分类 2-8 个，数据 1-3 组，结论≤3 条")
+        parts.append("2-8 categories, 1-3 series, ≤3 insights")
     if "framework" in cap:
-        parts.append("每格≤4 条、每条≤16 字（画布每格≤3 条、每条≤14 字）")
-    fl = "，".join(f"{k}≤{v}" for k, v in cap.get("fields", {}).items())
+        parts.append("≤4 entries per cell, ≤16 units each (canvas: ≤3 per cell, ≤14 units each)")
+    fl = ", ".join(f"{k}≤{v}" for k, v in cap.get("fields", {}).items())
     if fl:
         parts.append(fl)
-    return "；".join(parts)
+    return "; ".join(parts)
