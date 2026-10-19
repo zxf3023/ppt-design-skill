@@ -57,11 +57,11 @@
   },
   "emphasis_color": "primary",
   "name": "paper-notes",
-  "label": "纸感手记",
+  "label": "Paper Notes",
   "rules": [
-    "卡片几乎直角、不加阴影，像贴在纸上的便签",
-    "砖红色只给标题强调和重点卡，不做大块底色",
-    "插画保留手绘线条感，不要光滑的 3D"
+    "Cards are nearly square with no shadow, like notes stuck onto paper",
+    "Brick red only for title emphasis and key cards, never a large fill",
+    "Illustrations keep a hand-drawn line quality; no glossy 3D"
   ],
   "forbid": {
     "pure_white": true
