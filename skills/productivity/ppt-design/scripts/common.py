@@ -127,7 +127,7 @@ class Style:
                 c = mix(c0, pal["text"], k / 10)
             if c != c0:
                 pal[key] = c
-                self.fixes.append(f"{key} #{c0} 在背景上太浅，已加深到 #{c}")
+                self.fixes.append(f"{key} #{c0} is too light on the background, darkened to #{c}")
         # "label": highlight pulled just far enough toward the text colour to read at 12pt
         # (kickers, small item numbers). highlight itself stays vivid for big numbers and marks.
         if "label" not in pal and "highlight" in pal:
