@@ -55,13 +55,13 @@
     "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text"
   },
   "rules": [
-    "金色只做细线、数字和小面积点缀，不铺大色块",
-    "标题用宋体，正文保持黑体，保证投影可读",
-    "一页只放一组核心数字，留足暗部空间"
+    "Gold is only for hairlines, numerals and small accents — never a large fill",
+    "Serif headings, sans-serif body, so it stays readable when projected",
+    "One set of core numbers per page, with plenty of dark space around it"
   ],
   "emphasis_color": "accent",
   "name": "black-gold",
-  "label": "黑金述职",
+  "label": "Black Gold",
   "forbid": {
     "pure_black": true,
     "shadow": true
