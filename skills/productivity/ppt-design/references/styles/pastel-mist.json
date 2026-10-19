@@ -54,12 +54,12 @@
     "negative": "text, letters, words, numbers, captions, watermark, logo, signature, frame, border, UI text"
   },
   "rules": [
-    "柔雾只在四角，中间留白给文字",
-    "标题用深藏青宋体，别用纯黑",
-    "卡片半透明加轻阴影，避免硬边框"
+    "The soft mist sits in the corners only; the middle is left clear for text",
+    "Headings in deep navy serif, never pure black",
+    "Cards are semi-transparent with a light shadow; no hard borders"
   ],
   "emphasis_color": "accent",
   "name": "pastel-mist",
-  "label": "蓝粉柔雾",
+  "label": "Pastel Mist",
   "forbid": {}
 }
