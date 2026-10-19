@@ -62,12 +62,12 @@
     ]
   },
   "rules": [
-    "大块深灰只出现在撕纸边的色带里",
-    "荧绿做数字底、胶囊和笔刷，不用来写字",
-    "数据页优先，图表用深灰加荧绿两色"
+    "Large dark-grey blocks appear only in the torn-edge colour band",
+    "Lime is for number backdrops, pills and brush strokes — never for type",
+    "Lead with data pages; charts use dark grey plus lime only"
   ],
   "name": "ink-lime",
-  "label": "黑灰荧绿",
+  "label": "Ink Lime",
   "forbid": {
     "shadow": true
   }
