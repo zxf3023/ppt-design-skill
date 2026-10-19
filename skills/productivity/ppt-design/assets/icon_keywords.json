@@ -1,584 +1,571 @@
 {
  "message-circle": [
-  "聊天",
-  "对话",
-  "消息",
-  "说",
-  "沟通",
-  "chat"
+  "chat",
+  "conversation",
+  "message",
+  "say",
+  "communication"
  ],
  "bot": [
-  "机器人",
+  "robot",
   "AI",
-  "智能体",
   "Agent",
-  "助手"
+  "assistant"
  ],
  "sparkles": [
-  "亮点",
-  "神奇",
+  "highlight",
+  "magic",
   "AI",
-  "新",
-  "魔法"
+  "new"
  ],
  "zap": [
-  "快",
-  "闪电",
-  "效率",
-  "立刻"
+  "fast",
+  "lightning",
+  "efficiency",
+  "instant"
  ],
  "rocket": [
-  "上手",
-  "启动",
-  "开始",
-  "起飞",
-  "增长"
+  "onboarding",
+  "launch",
+  "start",
+  "takeoff",
+  "growth"
  ],
  "flame": [
-  "火",
-  "爆火",
-  "热门",
-  "刷屏"
+  "fire",
+  "viral",
+  "popular"
  ],
  "trending-up": [
-  "增长",
-  "上升",
-  "趋势",
-  "涨"
+  "growth",
+  "rise",
+  "trend",
+  "up"
  ],
  "bar-chart": [
-  "数据",
-  "统计",
-  "图表",
-  "指标"
+  "data",
+  "statistics",
+  "chart",
+  "metric"
  ],
  "download": [
-  "下载",
-  "安装"
+  "download",
+  "install"
  ],
  "users": [
-  "用户",
-  "大家",
-  "团队",
-  "人群",
-  "日活"
+  "user",
+  "everyone",
+  "team",
+  "audience",
+  "DAU"
  ],
  "user": [
-  "个人",
-  "我",
-  "你",
-  "账号"
+  "personal",
+  "me",
+  "you",
+  "account"
  ],
  "smartphone": [
-  "手机",
-  "移动端",
-  "App",
-  "应用"
+  "phone",
+  "mobile",
+  "App"
  ],
  "monitor": [
-  "电脑",
-  "屏幕",
-  "桌面",
-  "关屏"
+  "computer",
+  "screen",
+  "desktop"
  ],
  "cloud": [
-  "云端",
-  "云",
-  "在线",
-  "服务器"
+  "cloud",
+  "online",
+  "server"
  ],
  "server": [
-  "服务器",
-  "后台",
-  "虚拟机"
+  "server",
+  "backend",
+  "VM"
  ],
  "shield-check": [
-  "安全",
-  "隔离",
-  "保护",
-  "放心"
+  "security",
+  "isolation",
+  "protection",
+  "trust"
  ],
  "shield-alert": [
-  "风险",
-  "危险",
-  "坑"
+  "risk",
+  "danger",
+  "pitfall"
  ],
  "lock": [
-  "隐私",
-  "锁",
-  "权限",
-  "加密"
+  "privacy",
+  "lock",
+  "permission",
+  "encryption"
  ],
  "key": [
-  "密码",
-  "钥匙",
-  "授权"
+  "password",
+  "key",
+  "authorization"
  ],
  "eye": [
-  "监工",
-  "查看",
-  "盯着",
-  "观察"
+  "supervise",
+  "view",
+  "watch",
+  "observe"
  ],
  "eye-off": [
-  "隐藏",
-  "隐私",
-  "不看"
+  "hide",
+  "privacy",
+  "ignore"
  ],
  "settings": [
-  "设置",
-  "配置"
+  "settings",
+  "configuration"
  ],
  "sliders": [
-  "调节",
-  "权限",
-  "选项"
+  "adjust",
+  "permission",
+  "option"
  ],
  "check-circle": [
-  "正确",
-  "完成",
-  "可以",
-  "对"
+  "correct",
+  "done",
+  "ok",
+  "right"
  ],
  "x-circle": [
-  "错误",
-  "不行",
-  "禁止"
+  "error",
+  "no",
+  "forbidden"
  ],
  "alert-triangle": [
-  "警告",
-  "注意",
-  "坑",
-  "犯错",
-  "冷水"
+  "warning",
+  "caution",
+  "pitfall",
+  "mistake",
+  "reality"
  ],
  "info": [
-  "说明",
-  "提示",
-  "信息"
+  "note",
+  "tip",
+  "information"
  ],
  "lightbulb": [
-  "建议",
-  "想法",
-  "技巧",
-  "提示"
+  "advice",
+  "idea",
+  "tip"
  ],
  "target": [
-  "目标",
-  "精准",
-  "重点"
+  "goal",
+  "precise",
+  "focus"
  ],
  "list-checks": [
-  "清单",
-  "检查",
-  "步骤"
+  "checklist",
+  "check",
+  "steps"
  ],
  "clipboard-list": [
-  "任务",
-  "待办",
-  "计划"
+  "task",
+  "todo",
+  "plan"
  ],
  "file-text": [
-  "文档",
-  "资料",
-  "报告",
-  "文章"
+  "document",
+  "material",
+  "report",
+  "article"
  ],
  "table": [
-  "表格",
-  "对比"
+  "table",
+  "comparison"
  ],
  "search": [
-  "搜索",
-  "查",
-  "查资料",
-  "找"
+  "search",
+  "lookup",
+  "research",
+  "find"
  ],
  "mail": [
-  "邮箱",
-  "邮件"
+  "email",
+  "mail"
  ],
  "quote": [
-  "引用",
-  "金句",
-  "原话",
-  "提示词"
+  "quote",
+  "catchphrase",
+  "verbatim",
+  "prompt"
  ],
  "message-quote": [
-  "话术",
-  "提示词",
-  "例句"
+  "script",
+  "prompt",
+  "example"
  ],
  "globe": [
-  "全球",
-  "国家",
-  "地区",
-  "开放",
-  "美国",
-  "国内"
+  "global",
+  "country",
+  "region",
+  "open",
+  "USA",
+  "domestic"
  ],
  "map-pin": [
-  "地点",
-  "位置",
-  "本地"
+  "location",
+  "position",
+  "local"
  ],
  "calendar": [
-  "日期",
-  "日程",
-  "周六",
-  "预约"
+  "date",
+  "schedule",
+  "Saturday",
+  "booking"
  ],
  "clock": [
-  "时间",
-  "分钟",
-  "多久"
+  "time",
+  "minutes",
+  "duration"
  ],
  "hand": [
-  "动手",
-  "手"
+  "hands-on",
+  "hand"
  ],
  "handshake": [
-  "信任",
-  "合作"
+  "trust",
+  "partnership"
  ],
  "footprints": [
-  "步骤",
-  "一步",
-  "上手",
-  "顺序"
+  "steps",
+  "onboarding",
+  "order"
  ],
  "list-ordered": [
-  "顺序",
-  "排序",
-  "第一"
+  "order",
+  "sort",
+  "first"
  ],
  "arrow-right": [
-  "下一步",
-  "开始",
-  "前往"
+  "next",
+  "start",
+  "go"
  ],
  "link": [
-  "连接",
-  "第三方",
-  "关联"
+  "connect",
+  "third-party",
+  "link"
  ],
  "plug": [
-  "接入",
-  "插件",
-  "连接"
+  "integration",
+  "plugin",
+  "connect"
  ],
  "layers": [
-  "底层",
-  "层",
-  "模型",
-  "架构"
+  "layer",
+  "model",
+  "architecture"
  ],
  "cpu": [
-  "发动机",
-  "模型",
-  "芯片",
-  "算力"
+  "engine",
+  "model",
+  "chip",
+  "compute"
  ],
  "brain": [
-  "脑子",
-  "判断",
-  "思考",
-  "理解"
+  "brain",
+  "judgment",
+  "thinking",
+  "understanding"
  ],
  "graduation-cap": [
-  "入门",
-  "学习",
-  "小白",
-  "课程"
+  "beginner",
+  "learn",
+  "novice",
+  "course"
  ],
  "book-open": [
-  "教程",
-  "阅读",
-  "学习"
+  "tutorial",
+  "reading",
+  "learning"
  ],
  "play": [
-  "开始",
-  "播放",
-  "视频"
+  "start",
+  "play",
+  "video"
  ],
  "thumbs-up": [
-  "靠谱",
-  "好评",
-  "推荐"
+  "reliable",
+  "praise",
+  "recommend"
  ],
  "store": [
-  "商店",
-  "亚马逊",
-  "店铺",
-  "电商"
+  "store",
+  "Amazon",
+  "shop",
+  "ecommerce"
  ],
  "shopping-cart": [
-  "下单",
-  "购物",
-  "比价"
+  "order",
+  "shopping",
+  "compare"
  ],
  "utensils": [
-  "餐厅",
-  "吃饭",
-  "订餐"
+  "restaurant",
+  "dining",
+  "food"
  ],
  "ban": [
-  "拦截",
-  "禁止",
-  "门外",
-  "不能"
+  "block",
+  "forbidden",
+  "outside",
+  "cannot"
  ],
  "badge-alert": [
-  "胡说",
-  "错误信息",
-  "幻觉"
+  "nonsense",
+  "misinformation",
+  "hallucination"
  ],
  "wallet": [
-  "价格",
-  "钱",
-  "费用"
+  "price",
+  "money",
+  "cost"
  ],
  "calculator": [
-  "会计",
-  "计算"
+  "accounting",
+  "calculation"
  ],
  "briefcase": [
-  "工作",
-  "生意",
-  "职场"
+  "work",
+  "business",
+  "career"
  ],
  "building": [
-  "公司",
-  "企业",
+  "company",
+  "enterprise",
   "Meta"
  ],
  "star": [
-  "重点",
-  "收藏",
-  "星"
+  "focus",
+  "favorite",
+  "star"
  ],
  "flag": [
-  "里程碑",
-  "目标"
+  "milestone",
+  "goal"
  ],
  "tag": [
-  "名字",
-  "标签",
-  "名称"
+  "name",
+  "tag"
  ],
  "help-circle": [
-  "疑问",
-  "问题",
-  "为什么"
+  "question",
+  "problem",
+  "why"
  ],
  "compass": [
-  "方向",
-  "指南"
+  "direction",
+  "guide"
  ],
  "gauge": [
-  "程度",
-  "速度",
-  "性能"
+  "level",
+  "speed",
+  "performance"
  ],
  "power": [
-  "关机",
-  "关屏",
-  "开关"
+  "shutdown",
+  "screen off",
+  "switch"
  ],
  "moon": [
-  "后台",
-  "夜间",
-  "关屏"
+  "background",
+  "night",
+  "screen off"
  ],
  "database": [
-  "数据",
-  "存储",
-  "训练"
+  "data",
+  "storage",
+  "training"
  ],
  "pen": [
-  "编辑",
-  "写",
-  "修改"
+  "edit",
+  "write",
+  "modify"
  ],
  "mic": [
-  "口播",
-  "语音",
-  "录音"
+  "voiceover",
+  "voice",
+  "recording"
  ],
  "video": [
-  "视频",
-  "拍摄"
+  "video",
+  "shoot"
  ],
  "image": [
-  "图片",
-  "照片"
+  "image",
+  "photo"
  ],
  "palette": [
-  "设计",
-  "配色",
-  "美化"
+  "design",
+  "color",
+  "beautify"
  ],
  "wand": [
-  "自动",
-  "魔法",
-  "一键"
+  "automatic",
+  "magic",
+  "one-click"
  ],
  "workflow": [
-  "工作流",
-  "流程",
-  "自动化"
+  "workflow",
+  "process",
+  "automation"
  ],
  "leaf": [
-  "环保",
-  "自然",
-  "绿色"
+  "eco",
+  "nature",
+  "green"
  ],
  "recycle": [
-  "回收",
-  "循环"
+  "recycle",
+  "circular"
  ],
  "heart": [
-  "喜欢",
-  "健康"
+  "like",
+  "health"
  ],
  "send": [
-  "发送",
-  "代发",
-  "发消息"
+  "send",
+  "outreach",
+  "messaging"
  ],
  "bell": [
-  "通知",
-  "提醒"
+  "notification",
+  "reminder"
  ],
  "award": [
-  "成就",
-  "奖",
-  "优秀"
+  "achievement",
+  "award",
+  "excellence"
  ],
  "trophy": [
-  "冠军",
-  "第一"
+  "champion",
+  "first"
  ],
  "code": [
-  "代码",
-  "开发"
+  "code",
+  "development"
  ],
  "terminal": [
-  "部署",
-  "本地部署",
-  "命令行"
+  "deploy",
+  "self-hosted",
+  "CLI"
  ],
  "app-window": [
-  "应用",
-  "界面",
-  "App"
+  "app",
+  "interface"
  ],
  "mouse-pointer": [
-  "点击",
-  "操作"
+  "click",
+  "action"
  ],
  "phone": [
-  "电话",
-  "联系"
+  "call",
+  "contact"
  ],
  "hourglass": [
-  "等待",
-  "耐心"
+  "wait",
+  "patience"
  ],
  "refresh": [
-  "更新",
-  "刷新"
+  "update",
+  "refresh"
  ],
  "share": [
-  "分享",
-  "转发"
+  "share",
+  "repost"
  ],
  "thumbs-down": [
-  "差评",
-  "不推荐"
+  "dislike",
+  "avoid"
  ],
  "trash": [
-  "垃圾",
-  "其他垃圾",
-  "删除",
-  "扔"
+  "garbage",
+  "waste",
+  "delete",
+  "throw"
  ],
  "battery": [
-  "电池",
-  "电量",
-  "有害"
+  "battery",
+  "charge",
+  "hazardous"
  ],
  "apple": [
-  "果皮",
-  "水果",
-  "厨余",
-  "食物"
+  "peel",
+  "fruit",
+  "compost",
+  "food"
  ],
  "pill": [
-  "药品",
-  "药",
-  "医疗"
+  "medicine",
+  "drug",
+  "medical"
  ],
  "shopping-bag": [
-  "购物袋",
-  "购物",
-  "塑料袋"
+  "bag",
+  "shopping",
+  "plastic"
  ],
  "sprout": [
-  "成长",
-  "发芽",
-  "种植",
-  "土壤"
+  "growth",
+  "sprout",
+  "planting",
+  "soil"
  ],
  "tree": [
-  "树",
-  "森林",
-  "自然"
+  "tree",
+  "forest",
+  "nature"
  ],
  "factory": [
-  "工厂",
-  "处理",
-  "生产"
+  "factory",
+  "processing",
+  "production"
  ],
  "lightbulb-off": [
-  "灯管",
-  "节能",
-  "关灯"
+  "lamp",
+  "energy",
+  "lights off"
  ],
  "shirt": [
-  "衣服",
-  "服装",
-  "纺织"
+  "clothes",
+  "apparel",
+  "textile"
  ],
  "baby": [
-  "儿童",
-  "孩子",
-  "宝宝"
+  "child",
+  "kids",
+  "baby"
  ],
  "heart-pulse": [
-  "健康",
-  "医疗",
-  "心率"
+  "health",
+  "medical",
+  "heart rate"
  ],
  "dollar": [
-  "成本",
-  "收入",
-  "美元",
-  "钱"
+  "cost",
+  "revenue",
+  "dollar",
+  "money"
  ],
  "thermometer": [
-  "温度",
-  "气候",
-  "变暖"
+  "temperature",
+  "climate",
+  "warming"
  ],
  "mountain": [
-  "山",
-  "户外",
-  "填埋"
+  "mountain",
+  "outdoor",
+  "landfill"
  ],
  "waves": [
-  "水源",
-  "海洋",
-  "水"
+  "water",
+  "ocean"
  ]
 }
