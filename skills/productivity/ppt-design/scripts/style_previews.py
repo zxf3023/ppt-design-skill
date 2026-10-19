@@ -24,13 +24,13 @@ sys.path.insert(0, str(HERE))
 from common import load_json, save_json, SKILL_DIR, ASSET_DIR, get_font, style_file  # noqa: E402
 
 
-SAMPLE = {"meta": {"title": "示例", "series": "三分钟看懂", "anchor": {"description": "a glossy app icon", "glyph": "AI"}},
-          "slides": [{"n": 1, "type": "cover", "kicker": "三分钟看懂", "title": "一个能替你办事的 AI",
-                      "subtitle": "不是聊天，是动手", "items": [{"text": "它是什么"}, {"text": "怎么上手"}, {"text": "有哪些坑"}]},
-                     {"n": 2, "type": "stats", "title": "它火得数据很硬",
-                      "items": [{"value": "73万", "label": "上线 5 天下载"}, {"value": "250万", "label": "13 天累计下载"},
-                                {"value": "3倍", "label": "日活对比同期"}],
-                      "takeaway": "真有人天天在用，不是一阵风", "page": "02 / 11"}]}
+SAMPLE = {"meta": {"title": "Sample", "series": "In three minutes", "anchor": {"description": "a glossy app icon", "glyph": "AI"}},
+          "slides": [{"n": 1, "type": "cover", "kicker": "In three minutes", "title": "An AI that gets things done for you",
+                      "subtitle": "Not chat, but action", "items": [{"text": "What it is"}, {"text": "How to get started"}, {"text": "What to watch out for"}]},
+                     {"n": 2, "type": "stats", "title": "The numbers behind the hype",
+                      "items": [{"value": "730k", "label": "downloads in 5 days"}, {"value": "2.5M", "label": "total downloads in 13 days"},
+                                {"value": "3x", "label": "daily actives vs. the same period"}],
+                      "takeaway": "People really use it every day, not just a passing fad", "page": "02 / 11"}]}
 
 
 def run(args):
@@ -136,7 +136,7 @@ def main():
         if a.apply not in idx:
             raise SystemExit(f"unknown preset {a.apply}; choose from {', '.join(idx)}")
         shutil.copyfile(style_file(a.apply), work / "style.json")
-        print(f"style.json <- {a.apply}（{idx[a.apply]['name']}）")
+        print(f"style.json <- {a.apply} ({idx[a.apply]['name']})")
         return
 
     if a.sample:
@@ -158,7 +158,7 @@ def main():
             raise SystemExit(f"unknown preset {p}")
         rows.append(build_one(work, p, deck))
         labels.append(str(i))
-        print(f"{i}. {p}（{idx[p]['name']}）适合：{idx[p]['best_for']}")
+        print(f"{i}. {p} ({idx[p]['name']}) best for: {idx[p]['best_for']}")
     out = work / "previews" / "sheet.png"
     sheet(rows, out, labels)
     print(f"sheet: {out}")
