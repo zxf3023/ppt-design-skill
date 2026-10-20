@@ -1,0 +1,4 @@
+interface:
+  display_name: "PPT Master"
+  short_description: "Run the full deck workflow, requirements to visual QA"
+  default_prompt: "Use $ppt-master to take a deck from request to file: clarify the scenario, structure the narrative, set the design system, rotate layouts, then generate or edit the .pptx and QA every rendered page before delivery. Works with either pptxgenjs or python-pptx."

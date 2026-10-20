@@ -1,6 +1,6 @@
 # PPT Design
 
-An agent skill for designing **and producing** PPT / deck presentations that actually communicate.
+Two agent skills for designing and producing PPT / deck presentations that communicate.
 
 <div align="center">
 
@@ -8,18 +8,20 @@ An agent skill for designing **and producing** PPT / deck presentations that act
 
 </div>
 
-Most decks fail for the same reason: they are documents pretending to be slides. Slides are a **visual aid**, not a transcript. The audience came to listen to you, not to read your slides. Every page in this skill is built around one question — *this page says one thing, what is that thing?*
+Most decks fail for the same reason: they are documents pretending to be slides. Slides are a **visual aid**, not a transcript. The audience came to listen to you, not to read your slides. Every page in this skill is built around one question: *this page says one thing, what is that thing?*
 
-The skill has two halves that share one set of standards:
+**ppt-design** has two halves that share one set of standards:
 
-- **Methodology** — how to think and how to lay out. Logic, visual and structure frameworks, the hard numbers that make them land, and the checks that catch a bad deck before an audience does.
-- **Execution engine** — how to actually produce the file. Two routes, both emitting editable native `.pptx`: generate from a topic, article, script or outline; or beautify an existing deck against a reference image without changing a word of the text.
+- **Methodology**: how to think and how to lay out. Logic, visual and structure frameworks, the hard numbers that make them land, and the checks that catch a bad deck before an audience does.
+- **Execution engine**: how to produce the file. Two routes, both emitting editable native `.pptx`: generate from a topic, article, script or outline; or beautify an existing deck against a reference image without changing a word of the text.
 
-You can use the methodology alone for review, outlining and specification work, or run the whole thing end to end.
+The methodology stands alone for review, outlining and specification work, or run the whole thing end to end.
+
+**ppt-master** runs the same job as one workflow in Chinese, from clarifying the request to the visual QA pass. It stays tool-neutral: pptxgenjs or python-pptx both work, and it edits existing decks by unpacking the XML.
 
 ## What it gives you
 
-Three theory frameworks that answer three different questions, plus the hard numbers that make them land:
+**ppt-design** ships three theory frameworks that answer three different questions, plus the hard numbers that make them land:
 
 | Layer | Framework | Question it answers |
 | --- | --- | --- |
@@ -29,12 +31,12 @@ Three theory frameworks that answer three different questions, plus the hard num
 
 Use them in that order: think with the logic layer, choose a container with the structure layer, then lay it out with the visual layer.
 
-The engine carries the parts that are arithmetic and the parts that are labour:
+The engine handles the arithmetic and the labour:
 
 - **14 style presets** (Swiss grid, ink magazine, cobalt type, dark tech, warm orange and more), each with hard rules the layouts must obey
 - **A layout library** with per-layout capacity, so content that does not fit is caught before it is rendered
 - **An icon library**, a **five-dimension self-review** (unity, hierarchy, detail, communication, pacing), and a QA pass that checks for missing text, overflow, overlap and over-emphasis
-- **Image generation is optional** — configure OpenAI, Gemini, Volcengine Ark or a custom endpoint, or let it fall back to programmatic illustration
+- **Image generation is optional**: configure OpenAI, Gemini, Volcengine Ark or a custom endpoint, or let it fall back to programmatic illustration
 
 ## Installation
 
@@ -69,7 +71,7 @@ Copy the skill folder into your agent's skills directory:
 cp -r skills/productivity/ppt-design ~/.your-agent/skills/
 ```
 
-The skill is self-contained. Before first use, run the environment check — it verifies Python, `python-pptx`, Pillow, numpy and lxml, and can install what is missing:
+The skill is self-contained. Before first use, run the environment check, which verifies Python, `python-pptx`, Pillow, numpy and lxml, and can install what is missing:
 
 ```bash
 python3 scripts/setup_check.py --quick --install
@@ -86,6 +88,7 @@ LibreOffice is recommended (it renders the preview sheets) but not required: wit
 Model- or user-reachable (rich trigger phrasing so the model can reach for it).
 
 - **[ppt-design](./skills/productivity/ppt-design/SKILL.md)**: Design and produce a deck. Methodology: logic (Pyramid Principle / MECE / SCQA), visual (Gestalt / rule of thirds / Hick's law / CRAP), structure (5W2H / SWOT / funnel / timeline), type scale, whitespace, colour, wall-of-text handling, page templates and narrative pacing. Execution engine: generate a deck from a topic, article, script or outline with conclusion-style titles and speaker notes, or beautify an existing `.pptx` against a reference image without changing the text. Ships 14 style presets, an icon library and a five-dimension self-review chain.
+- **[ppt-master](./skills/productivity/ppt-master/SKILL.md)**: A tool-neutral deck workflow in Chinese. Clarify the request, structure the narrative, set the design system, rotate through ten layouts, follow the data-visualisation rules, then build or edit the file and QA every rendered page. Implementation guidance for both pptxgenjs and python-pptx, structured decks driven by a theme and layouts, and the pitfalls of each.
 
 ## Layout
 
@@ -118,8 +121,14 @@ skills/productivity/ppt-design/
 └── config.example.json       # engine: image backend template
 ```
 
-The engine drives three intermediate files — `deck.json` (what each page says), `style.json` (palette, fonts, decoration) and `plan.json` (layout, icons and illustration prompts per page). Scripts do the deterministic work; the model does the judgement.
+```
+skills/productivity/ppt-master/
+├── SKILL.md                  # the workflow: 12 sections
+└── agents/openai.yaml        # display name and short description
+```
+
+The engine drives three intermediate files: `deck.json` (what each page says), `style.json` (palette, fonts, decoration) and `plan.json` (layout, icons and illustration prompts per page). Scripts do the deterministic work; the model does the judgement.
 
 ## Licence
 
-MIT — see [LICENSE](./LICENSE). The execution engine is derived from [luobo-ppt](https://github.com/zhouwei713/luobo-ppt) by zhouluobo, also MIT — see [LICENSE-luobo-ppt](./LICENSE-luobo-ppt).
+MIT, see [LICENSE](./LICENSE). The execution engine is derived from [luobo-ppt](https://github.com/zhouwei713/luobo-ppt) by zhouluobo, also MIT, see [LICENSE-luobo-ppt](./LICENSE-luobo-ppt).

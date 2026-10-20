@@ -1,7 +1,7 @@
 {
   "name": "ppt-design-skills",
-  "version": "2.0.0",
-  "description": "A PPT / deck design methodology plus an execution engine, as one agent skill. Three theory layers (logic, visual, structure), hard numeric specs, wall-of-text handling and narrative pacing; plus generation and beautification routes that emit editable native .pptx, 14 style presets, an icon library and a five-dimension self-review chain.",
+  "version": "2.1.0",
+  "description": "Two agent skills for deck work. ppt-design is a methodology plus an execution engine: three theory layers (logic, visual, structure), hard numeric specs, wall-of-text handling, generate and beautify routes that emit editable native .pptx, 14 style presets and a five-dimension self-review. ppt-master is a tool-neutral production workflow in Chinese: requirements, narrative, design system, layout rotation, data-visualisation rules, pptxgenjs and python-pptx implementation guidance, and a mandatory visual QA pass.",
   "author": {
     "name": "zxf3023",
     "url": "https://github.com/zxf3023"
@@ -21,6 +21,7 @@
     "skills"
   ],
   "skills": [
-    "./skills/productivity/ppt-design"
+    "./skills/productivity/ppt-design",
+    "./skills/productivity/ppt-master"
   ]
 }
